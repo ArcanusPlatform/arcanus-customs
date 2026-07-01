@@ -1,0 +1,140 @@
+{
+  "company": {
+    "id": "demo-company-001",
+    "name": "M-Suite Customs Demo",
+    "slug": "m-suite-customs-demo",
+    "database_name": "tenant_demo-company-001"
+  },
+  "user": {
+    "id": "demo-user-001",
+    "email": "demo@mcustoms.com",
+    "password": "demo1234",
+    "first_name": "Demo",
+    "last_name": "User",
+    "role": "admin"
+  },
+  "clients": [
+    {
+      "id": "demo-client-001",
+      "name": "Example Importer Ltd",
+      "eori": "GB987654321000",
+      "vat_number": "GB987654321",
+      "email": "customs@example-importer.test",
+      "phone": "+44 20 7946 0001",
+      "address": "Demo House, London",
+      "status": "active"
+    }
+  ],
+  "declarations": [
+    {
+      "id": "demo-declaration-001",
+      "mrn": "23GB123456789ABCDEF",
+      "entry_number": "ENT-001",
+      "acceptance_date": "2025-01-10",
+      "declaration_type": "IM4",
+      "trader_eori": "GB123456789000",
+      "importer_eori": "GB987654321000",
+      "consignee_name": "Example Importer Ltd",
+      "consignor_name": "Example Supplier GmbH",
+      "incoterm": "CIF",
+      "procedure_code": "4000",
+      "previous_procedure_code": "000",
+      "soe_code": "SOE01",
+      "roe_code": "ROE02",
+      "status": "accepted",
+      "total_duty_paid": 75.25,
+      "total_vat_paid": 515,
+      "total_excise_paid": 0,
+      "declaration_source": "csv",
+      "client_id": "demo-client-001",
+      "client_name": "Example Importer Ltd"
+    }
+  ],
+  "items": [
+    {
+      "id": "demo-item-001",
+      "declaration_id": "demo-declaration-001",
+      "declaration_mrn": "23GB123456789ABCDEF",
+      "item_number": 1,
+      "commodity_code": "7318159090",
+      "description": "Steel fasteners",
+      "origin_country": "DE",
+      "gross_mass": 120.5,
+      "net_mass": 100,
+      "quantity": 250,
+      "invoice_value": 2500,
+      "invoice_currency": "GBP",
+      "procedure_code": "4000"
+    }
+  ],
+  "taxes": [
+    {
+      "id": "demo-tax-001",
+      "item_id": "demo-item-001",
+      "declaration_mrn": "23GB123456789ABCDEF",
+      "item_number": 1,
+      "tax_type": "CUST",
+      "tax_base": 2500,
+      "tax_rate": 3,
+      "tax_amount": 75.25,
+      "calculation_method": "ad_valorem"
+    },
+    {
+      "id": "demo-tax-002",
+      "item_id": "demo-item-001",
+      "declaration_mrn": "23GB123456789ABCDEF",
+      "item_number": 1,
+      "tax_type": "VAT",
+      "tax_base": 2575.25,
+      "tax_rate": 20,
+      "tax_amount": 515,
+      "calculation_method": "ad_valorem"
+    }
+  ],
+  "claims": [
+    {
+      "id": "demo-claim-001",
+      "client_id": "demo-client-001",
+      "declaration_id": "demo-declaration-001",
+      "claim_reference": "C285-DEMO-001",
+      "mrns": ["23GB123456789ABCDEF"],
+      "reason": "tariff_error",
+      "reason_description": "Demo claim for tariff classification correction on steel fasteners.",
+      "total_claim_amount": 75.25,
+      "items": [
+        {
+          "item_number": 1,
+          "commodity_code": "7318159090",
+          "claim_amount": 75.25,
+          "reason": "Incorrect duty rate used in original declaration"
+        }
+      ],
+      "status": "draft",
+      "compliance_score": 90
+    }
+  ],
+  "versions": [
+    {
+      "id": "demo-version-001",
+      "declaration_id": "demo-declaration-001",
+      "mrn": "23GB123456789ABCDEF",
+      "version_number": 1,
+      "source": "csv",
+      "snapshot_before": null
+    }
+  ],
+  "events": [
+    {
+      "id": "demo-event-001",
+      "declaration_id": "demo-declaration-001",
+      "mrn": "23GB123456789ABCDEF",
+      "event_type": "DMSACC",
+      "source": "hmrc_notification",
+      "received_at": "2025-01-11T10:30:00.000Z",
+      "payload": {
+        "status": "accepted",
+        "message": "Demo acceptance notification"
+      }
+    }
+  ]
+}

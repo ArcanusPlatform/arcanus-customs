@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Compliance Statement</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #000000;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.65;
+  background: #ffffff;
+  color: #000;
+}
+
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 5px 40px;
+}
+
+.header-full img.logo {
+  width: 80px;
+}
+
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--theme-colour);
+}
+
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 5px 0 20px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 40px 40px 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--theme-colour);
+  padding-bottom: 6px;
+  margin-top: 40px;
+  margin-bottom: 18px;
+}
+
+.summary-box {
+  padding: 18px 20px;
+  background: #f4f7fb;
+  border-left: 4px solid var(--theme-colour);
+  border-radius: 6px;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.info-box {
+  background: #f9fafc;
+  border-left: 4px solid var(--theme-colour);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 18px 0 30px 0;
+}
+
+.footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+    <img src="M_Logo_Black.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Compliance Statement</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<!-- SUMMARY BOX -->
+<h2 class="section-title">Customs Compliance Statement</h2>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>EORI:</strong> {{trader.eori}}<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<!-- DECLARATION INTRO -->
+<h2 class="section-title">Declaration of Compliance</h2>
+
+<p>
+This Compliance Statement is submitted in support of the C285 repayment claim referenced above, 
+in accordance with the Union Customs Code (Regulation (EU) No 952/2013) and the Taxation 
+(Cross-border Trade) Act 2018. The purpose of this document is to confirm the trader’s compliance 
+with all legal, procedural, and record-keeping obligations relevant to this claim.
+</p>
+
+<!-- REGULATORY FRAMEWORK -->
+<h2 class="section-title">Regulatory Framework</h2>
+
+<p>This claim is made under the following legal provisions:</p>
+
+<ul>
+    <li><strong>Union Customs Code Article 116:</strong> Repayment of import or export duty</li>
+    <li><strong>Union Customs Code Article 117:</strong> Remission of import or export duty</li>
+    <li><strong>UK Customs (Import Duty) (EU Exit) Regulations 2018:</strong> Post-Brexit framework</li>
+    <li><strong>HMRC Notice 366:</strong> Repayment and remission of charges on imported goods</li>
+</ul>
+
+<!-- TRADER DECLARATION -->
+<h2 class="section-title">Trader Compliance Declaration</h2>
+
+<p>
+<strong>{{trader.name}}</strong> (EORI: <strong>{{trader.eori}}</strong>) hereby declares that:
+</p>
+
+<div class="info-box">
+<ol style="margin:0; padding-left:20px;">
+    <li style="margin-bottom:12px;">
+        All information provided in this claim and supporting documentation is true, complete, 
+        and accurate to the best of our knowledge and belief.
+    </li>
+    <li style="margin-bottom:12px;">
+        The goods subject to this claim were imported in accordance with all applicable customs 
+        regulations and procedures at the time of importation.
+    </li>
+    <li style="margin-bottom:12px;">
+        The overpayment of duty/VAT was made in error and was not the result of deliberate 
+        misrepresentation or negligence.
+    </li>
+    <li style="margin-bottom:12px;">
+        All duties and VAT claimed have been paid to HMRC and have not been refunded or offset.
+    </li>
+    <li style="margin-bottom:12px;">
+        Proper customs and commercial records have been maintained and will be made available to HMRC if required.
+    </li>
+    <li style="margin-bottom:12px;">
+        No criminal investigations or proceedings are pending in relation to the goods covered by this claim.
+    </li>
+    <li style="margin-bottom:12px;">
+        The trader will cooperate fully with any HMRC enquiries, audits, or requests for additional evidence.
+    </li>
+</ol>
+</div>
+
+<!-- AGENT RESPONSIBILITIES -->
+<h2 class="section-title">Agent Responsibilities</h2>
+
+<p>
+Where this claim is submitted by an authorised intermediary:
+</p>
+
+<div class="info-box">
+    <p><strong>Agent:</strong> {{agent.company}}</p>
+    <p><strong>Agent EORI:</strong> {{agent.eori}}</p>
+    <p><strong>Agent Contact:</strong> {{agent.contact}}</p>
+
+    <p style="margin-top:15px;">
+    The agent confirms that they are duly authorised to act on behalf of the trader and have taken 
+    reasonable steps to verify the accuracy of the information submitted. All required consents, 
+    authorisations, and supporting documents have been obtained from the trader.
+    </p>
+</div>
+
+<!-- RECORD RETENTION -->
+<h2 class="section-title">Record Retention</h2>
+
+<p>
+The trader confirms that all records relevant to this claim — including import declarations, 
+commercial invoices, shipping documents, origin evidence, payment records, and correspondence — 
+will be retained for at least <strong>4 years</strong> from the date of importation in accordance with 
+legal requirements.
+</p>
+
+<!-- DATA PROTECTION -->
+<h2 class="section-title">Data Protection and Consent</h2>
+
+<p>
+The trader acknowledges that personal and commercial data supplied in connection with this claim 
+will be processed by HMRC under the Data Protection Act 2018 and UK GDPR. The trader consents to 
+HMRC using this information for the purposes of processing and validating the claim.
+</p>
+
+<!-- SIGNATURE -->
+<h2 class="section-title">Declaration and Signature</h2>
+
+<p>
+I declare that the information provided in this Compliance Statement and in the accompanying C285 
+repayment claim is true and complete to the best of my knowledge and belief. I understand that 
+providing false or misleading information may result in penalties or prosecution.
+</p>
+
+<table style="margin-top:30px; width:100%; border:none;">
+<tr style="border:none;">
+    <td style="border:none; width:50%; padding-right:20px;">
+        <p><strong>Signed:</strong></p>
+        <p style="border-bottom:1px solid #000; height:40px; margin-top:10px;"></p>
+    </td>
+    <td style="border:none; width:50%;">
+        <p><strong>Date:</strong></p>
+        <p style="border-bottom:1px solid #000; height:40px; margin-top:10px;"></p>
+    </td>
+</tr>
+
+<tr style="border:none;">
+    <td colspan="2" style="border:none; padding-top:20px;">
+        <p><strong>Name:</strong> {{trader.contact_name}}</p>
+        <p><strong>Position:</strong> ___________________________________</p>
+        <p><strong>Company:</strong> {{trader.name}}</p>
+        <p><strong>EORI:</strong> {{trader.eori}}</p>
+    </td>
+</tr>
+</table>
+
+<div style="margin-top:40px; padding:15px; background:#fff3cd; border-left:4px solid #ffc107;">
+    <p style="margin:0; font-size:13px;">
+        <strong>Important Notice:</strong> This Compliance Statement must be signed by a person with authority 
+        to make declarations to HMRC. False or misleading information may result in civil penalties under the 
+        Finance Act 2003 or criminal prosecution under the Customs and Excise Management Act 1979.
+    </p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

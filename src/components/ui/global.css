@@ -1,0 +1,904 @@
+/* MP Unified UI Styles - Complete Design System for Arcanus Practice */
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   THEME BRIDGE & LEGACY ALIASES
+   Keep old app class names working while resolving through theme/.
+   ============================================ */
+:root {
+  --primary-purple: var(--color-primary);
+  --primary-violet: var(--color-primary-hover);
+  --accent-purple: var(--color-accent);
+  --accent-violet: var(--violet-300);
+  --dark-bg: var(--color-bg);
+  --darker-bg: var(--color-chrome);
+  --card-bg-light: var(--color-surface-hover);
+  --purple-glow: var(--color-primary);
+  --border-dark: var(--color-border-soft);
+  --success-bg: var(--color-success-soft);
+  --danger-bg: var(--color-danger-soft);
+  --radius: var(--radius-md);
+
+  /* RGB forms for Tailwind opacity utilities. */
+  --color-bg-rgb: 10 14 26;
+  --color-surface-rgb: 30 41 59;
+  --color-border-rgb: 51 65 85;
+  --color-text-rgb: 241 245 249;
+  --color-text-muted-rgb: 148 163 184;
+  --color-danger-rgb: 248 113 113;
+  
+  /* Section Tints (5% opacity) */
+  --tint-dashboard: var(--color-primary-soft);
+  --tint-clients: var(--color-primary-soft);
+  --tint-onboarding: var(--color-primary-soft);
+  --tint-claims: var(--color-primary-soft);
+  --tint-manifest: var(--color-primary-soft);
+  --tint-analysis: var(--color-primary-soft);
+  --tint-compliance: var(--color-danger-soft);
+  --tint-contacts: var(--color-border-soft);
+  --tint-settings: var(--color-border-soft);
+  --tint-knowledge: var(--color-primary-soft);
+  --tint-templates: var(--color-primary-soft);
+  
+  /* Section Accents (full color) */
+  --accent-dashboard: var(--color-primary-hover);
+  --accent-clients: var(--color-accent);
+  --accent-onboarding: var(--color-primary);
+  --accent-claims: var(--color-primary-hover);
+  --accent-manifest: var(--color-accent);
+  --accent-analysis: var(--color-primary);
+  --accent-compliance: var(--color-danger);
+  --accent-contacts: var(--color-text-subtle);
+  --accent-settings: var(--color-text-subtle);
+  --accent-knowledge: var(--color-primary-hover);
+  --accent-templates: var(--color-primary);
+}
+
+[data-theme='light'] {
+  --color-bg-rgb: 248 250 252;
+  --color-surface-rgb: 255 255 255;
+  --color-border-rgb: 226 232 240;
+  --color-text-rgb: 15 23 42;
+  --color-text-muted-rgb: 100 116 139;
+  --color-danger-rgb: 220 38 38;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: var(--color-bg);
+    color: var(--text-light);
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-subtle);
+  }
+}
+
+/* ============================================
+   LAYOUT COMPONENTS - MP Practice Manager Style
+   ============================================ */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+/* Topbar - Full width, fixed at top */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: linear-gradient(135deg, var(--header-bg) 0%, rgba(var(--brand-primary-rgb), 0.2) 100%);
+  border-bottom: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  z-index: 200;
+  box-shadow: 0 4px 20px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+/* Sidebar - Starts below topbar */
+.sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 64px);
+  background: linear-gradient(180deg, var(--nav-bg) 0%, rgba(30, 41, 59, 0.8) 100%);
+  border-right: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+/* Main content area */
+.main {
+  margin-top: 64px;
+  margin-left: 240px;
+  padding: 0;
+  background: var(--bg-page);
+  min-height: calc(100vh - 64px);
+  flex: 1;
+}
+
+/* ============================================
+   DASHBOARD STYLES
+   ============================================ */
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard .header {
+  margin-bottom: 2rem;
+  position: static;
+  height: auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.dashboard .header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.dashboard .header p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(var(--brand-primary-rgb), 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(var(--brand-primary-rgb), 0.2);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--brand-primary-rgb), 0.2) 100%);
+}
+
+.card h2 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-light);
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.change {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.change.green {
+  background: var(--success-bg);
+  color: var(--color-success);
+}
+
+.change.red {
+  background: var(--danger-bg);
+  color: var(--color-danger);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.actionCard {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  text-align: left;
+  cursor: pointer;
+}
+
+.actionCard:hover {
+  background: var(--gold-tint);
+  border-color: var(--primary-purple);
+  box-shadow: 0 8px 25px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.actionCard .icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--primary-purple);
+}
+
+.actionCard .title {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ============================================
+   BUTTON SYSTEM - Unified Across All Pages
+   ============================================ */
+
+/* Primary Button - Uses section accent color */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 20px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Secondary Button - Neutral outline style */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Section-specific button colors */
+.btn-dashboard, .btn-clients, .btn-onboarding, .btn-claims, .btn-manifest,
+.btn-analysis, .btn-compliance, .btn-contacts, .btn-settings, .btn-knowledge,
+.btn-templates {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+  color: var(--color-text-on-primary);
+  box-shadow: 0 6px 18px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+/* ============================================
+   AUTH PAGE STYLES - Premium MP Design
+   ============================================ */
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--brand-primary-rgb), 0.2) 0%,
+    var(--bg-page) 45%,
+    var(--darker-bg) 100%
+  );
+  padding: 3rem 1rem;
+  position: relative;
+}
+
+.authCard {
+  width: min(380px, 100%);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.98) 0%, rgba(10, 14, 39, 0.98) 100%);
+  border-radius: 20px;
+  padding: 2rem 2rem;
+  box-shadow:
+    0 0 60px rgba(var(--brand-primary-rgb), 0.2),
+    0 0 30px rgba(var(--brand-primary-rgb), 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  color: var(--text-light);
+  position: relative;
+}
+
+.authCard::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--brand-primary-rgb), 0.2),
+    transparent 50%,
+    rgba(var(--brand-primary-rgb), 0.2)
+  );
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.authLogo {
+  width: 64px;
+  height: 64px;
+  display: block;
+  margin: 0 auto 1.25rem;
+  padding: 0.75rem;
+  background: rgba(var(--brand-primary-rgb), 0.2);
+  border: 2px solid rgba(var(--brand-primary-rgb), 0.2);
+  border-radius: 12px;
+  box-shadow:
+    0 0 30px rgba(var(--brand-primary-rgb), 0.2),
+    0 0 15px rgba(var(--brand-primary-rgb), 0.2),
+    inset 0 0 15px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.authTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.authSubtitle {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.authPowered {
+  text-align: center;
+  color: var(--accent-purple);
+  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.authInput {
+  width: 100%;
+  background: var(--color-bg-elevated);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.authInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+  background: var(--color-bg-elevated);
+}
+
+.authInput::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.authButton {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 10px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.authButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-violet) 0%, var(--accent-purple) 100%);
+  box-shadow: 0 5px 15px rgba(var(--brand-primary-rgb), 0.2);
+  transform: translateY(-1px);
+}
+
+.authButton:disabled {
+  cursor: not-allowed;
+  background: rgba(var(--brand-primary-rgb), 0.2);
+  box-shadow: none;
+}
+
+.authSecondary {
+  margin-top: 0.6rem;
+  background: transparent;
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  color: var(--text-light);
+  box-shadow: none;
+}
+
+.authSecondary:hover:not(:disabled) {
+  background: rgba(var(--brand-primary-rgb), 0.2);
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 15px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.authFooter {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
+.suite-navlist {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.suite-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 254, 254, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.suite-nav-item:hover {
+  background: rgba(var(--brand-primary-rgb), 0.2);
+  color: var(--text-light);
+}
+
+.suite-nav-item.active {
+  background: rgba(var(--brand-primary-rgb), 0.2);
+  color: var(--primary-purple);
+  border-left: 3px solid var(--primary-purple);
+}
+
+.suite-nav-icon {
+  font-size: 1.25rem;
+  width: 24px;
+  text-align: center;
+}
+
+.suite-nav-label {
+  flex: 1;
+  font-weight: 500;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.suite-h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.suite-shell-fixed {
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .suite-topbar,
+  .suite-sidebar-fixed,
+  .suite-assist,
+  .sidebar,
+  .header {
+    display: none !important;
+  }
+  .main {
+    margin: 0 !important;
+    padding: 0 16px !important;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ============================================
+   CONSOLIDATED LAYOUT SYSTEM
+   Merged from suite-layout.module.css
+   ============================================ */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+/* ============================================
+   CONSOLIDATED DASHBOARD COMPONENTS
+   Merged from dashboard.module.css
+   ============================================ */
+
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-header p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 8px 25px rgba(var(--brand-primary-rgb), 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(var(--brand-primary-rgb), 0.2);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(var(--brand-primary-rgb), 0.2) 100%);
+}
+
+.dashboard-card h2 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-light);
+  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-change {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.dashboard-change.green {
+  background: var(--success-bg);
+  color: var(--color-success);
+}
+
+.dashboard-change.red {
+  background: var(--danger-bg);
+  color: var(--color-danger);
+}
+
+.dashboard-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dashboard-action-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dashboard-action-card:hover {
+  background: var(--gold-tint);
+  border-color: var(--primary-purple);
+  box-shadow: 0 8px 25px rgba(var(--brand-primary-rgb), 0.2);
+}
+
+.dashboard-action-card .icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--primary-purple);
+}
+
+.dashboard-action-card .title {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Legacy class names for compatibility */
+.dashboard_root {
+  padding: 12px;
+}
+
+.dashboard_card {
+  border-radius: 12px;
+  background: var(--card-bg);
+  padding: 12px;
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.2);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.3);
+}
+
+/* ============================================
+   CONSOLIDATED PAGE HEADER SYSTEM
+   Merged from PageHeader.css
+   ============================================ */
+
+.page-header-final {
+  background: var(--tint-color);
+  min-height: 180px;
+  padding: 32px 48px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding-bottom: 28px;
+}
+
+.page-header-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-header-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumb-item {
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.breadcrumb-item:last-child {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: rgba(203, 213, 225, 0.5);
+  margin: 0 4px;
+  user-select: none;
+}
+
+.page-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.page-header-title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.2;
+}
+
+.page-header-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 12px;
+  background: var(--accent-color);
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.page-header-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-top: 28px;
+}
+
+.page-header-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-color);
+}
+
+/* Responsive Design for Page Headers */
+@media (max-width: 1024px) {
+  .page-header-final {
+    padding: 28px 40px 0;
+    min-height: 160px;
+  }
+
+  .page-header-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header-final {
+    padding: 24px 32px 0;
+    min-height: 140px;
+  }
+
+  .page-header-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding-bottom: 24px;
+  }
+
+  .page-header-title {
+    font-size: 1.75rem;
+  }
+
+  .page-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header-final {
+    padding: 20px 24px 0;
+    min-height: 120px;
+  }
+
+  .page-header-title {
+    font-size: 1.5rem;
+  }
+
+  .page-header-breadcrumb {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+
+  .page-header-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .page-header-badge {
+    min-width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .page-header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page-header-actions > * {
+    width: 100%;
+  }
+}

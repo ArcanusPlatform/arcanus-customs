@@ -1,0 +1,168 @@
+/* =============================================================
+   @arcanus/theme — whitelabel.css
+   WHITE-LABEL kit (tenant theming)
+   -------------------------------------------------------------
+   Lets a tenant swap LOGO + BRAND COLOUR across the software and
+   the document templates — without touching Arcanus Assist.
+
+   HOW IT WORKS
+     • Brand colour: apply one of the curated `data-brand="…"`
+       presets below to <html> (or any subtree), OR set the
+       --brand-* tokens inline for a fully custom (vetted) brand.
+     • Logo: set --brand-logo-url (app shell) and
+       --brand-doc-logo-url (letters/reports) to url('…'); set
+       --brand-name / --brand-mark for the wordmark + fallback.
+     • Arcanus Assist (.assist-*) reads --arcanus-* only, so it
+       stays violet under every tenant. Do not point Assist at
+       --brand-*.
+
+   SAFE COLOURS, not a free picker: every preset primary passes
+   AA contrast for white text on the button and stays legible on
+   both light and dark surfaces. Offer these as the tenant choices.
+   ============================================================= */
+
+/* =============================================================
+   SCOPE BRIDGE  — REQUIRED
+   A custom property whose value is var(--brand-*) is resolved
+   where it is DECLARED (at :root). To let a data-brand preset on a
+   subtree actually re-skin, we must RE-DECLARE the brand→semantic
+   mapping on the [data-brand] element so it resolves against the
+   preset's --brand-* values. Alpha amounts inherit from the active
+   theme (--brand-*-a) so light/dark stays correct.
+   ============================================================= */
+[data-brand] {
+  --color-primary:       var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-accent:        var(--brand-accent);
+  --color-ring:          var(--brand-primary-hover);
+  --color-primary-soft:  rgba(var(--brand-primary-rgb), var(--brand-soft-a, 0.14));
+  --color-border-brand:  rgba(var(--brand-primary-rgb), var(--brand-border-a, 0.30));
+  --shadow-focus:        0 0 0 3px rgba(var(--brand-primary-rgb), var(--brand-focus-a, 0.35));
+  --gradient-brand:      var(--brand-gradient);
+  --glow-brand:          0 0 0 1px rgba(var(--brand-primary-rgb),0.40), 0 0 24px rgba(var(--brand-primary-rgb),0.45), 0 0 60px rgba(var(--brand-primary-rgb),0.25);
+  --glow-brand-hover:    0 0 0 1px rgba(var(--brand-primary-rgb),0.55), 0 0 30px rgba(var(--brand-primary-rgb),0.60), 0 0 72px rgba(var(--brand-primary-rgb),0.35);
+}
+
+/* ---------- Logo component -------------------------------- */
+.brand-logo {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px; flex: none;
+  border-radius: var(--radius-md);
+  background: var(--brand-gradient);
+  color: #fff; font-weight: var(--weight-bold); font-size: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.brand-logo::before { content: var(--brand-mark); }
+
+/* Image logo (app shell). Falls back to the gradient+mark until
+   --brand-logo-url is set by the tenant. */
+.brand-logo--image {
+  background: var(--brand-logo-url) center / contain no-repeat,
+              var(--brand-gradient);
+}
+.brand-logo--image::before { content: ""; }
+
+/* Document logo variant — uses the print-safe doc logo slot. */
+.brand-logo--doc {
+  background: var(--brand-doc-logo-url, var(--brand-logo-url)) center / contain no-repeat,
+              var(--brand-gradient);
+}
+.brand-logo--doc::before { content: ""; }
+
+/* Wordmark — renders the tenant name from a token. */
+.brand-wordmark { font-weight: var(--weight-bold); letter-spacing: -0.01em; }
+.brand-wordmark::before { content: var(--brand-name); }
+
+/* =============================================================
+   SAFE COLOUR PRESETS
+   Each sets the full --brand-* contract. --brand-primary-rgb is
+   the triplet the theme uses to derive soft tints, focus rings,
+   borders and glows — keep it in sync with --brand-primary.
+   ============================================================= */
+
+/* Arcanus — default violet (here for explicitness / reset) */
+[data-brand="arcanus"] {
+  --brand-primary:       #7c3aed;
+  --brand-primary-hover: #8b5cf6;
+  --brand-primary-rgb:   124, 58, 237;
+  --brand-accent:        #a78bfa;
+  --brand-gradient:      linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+}
+
+/* Ocean — corporate blue */
+[data-brand="ocean"] {
+  --brand-primary:       #2563eb;
+  --brand-primary-hover: #3b82f6;
+  --brand-primary-rgb:   37, 99, 235;
+  --brand-accent:        #60a5fa;
+  --brand-gradient:      linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+}
+
+/* Verdant — teal */
+[data-brand="verdant"] {
+  --brand-primary:       #0d9488;
+  --brand-primary-hover: #14b8a6;
+  --brand-primary-rgb:   13, 148, 136;
+  --brand-accent:        #2dd4bf;
+  --brand-gradient:      linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+}
+
+/* Forest — emerald */
+[data-brand="forest"] {
+  --brand-primary:       #059669;
+  --brand-primary-hover: #10b981;
+  --brand-primary-rgb:   5, 150, 105;
+  --brand-accent:        #34d399;
+  --brand-gradient:      linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+/* Ember — burnt amber (darkened for white-text contrast) */
+[data-brand="ember"] {
+  --brand-primary:       #b45309;
+  --brand-primary-hover: #d97706;
+  --brand-primary-rgb:   180, 83, 9;
+  --brand-accent:        #f59e0b;
+  --brand-gradient:      linear-gradient(135deg, #b45309 0%, #d97706 100%);
+}
+
+/* Crimson — rose */
+[data-brand="crimson"] {
+  --brand-primary:       #e11d48;
+  --brand-primary-hover: #f43f5e;
+  --brand-primary-rgb:   225, 29, 72;
+  --brand-accent:        #fb7185;
+  --brand-gradient:      linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
+}
+
+/* Graphite — neutral slate (understated white-label) */
+[data-brand="graphite"] {
+  --brand-primary:       #475569;
+  --brand-primary-hover: #64748b;
+  --brand-primary-rgb:   71, 85, 105;
+  --brand-accent:        #94a3b8;
+  --brand-gradient:      linear-gradient(135deg, #334155 0%, #475569 100%);
+}
+
+/* ========== ARCANUS CUSTOMS BRAND PRESET ========== */
+/* Light theme: Dark purple with grey accents */
+[data-brand="customs"] {
+  --brand-primary:       #33224f;
+  --brand-primary-hover: #4c3474;
+  --brand-primary-rgb:   51, 34, 79;
+  --brand-accent:        #6b5b8f;
+  --brand-gradient:      linear-gradient(135deg, #33224f 0%, #4c3474 100%);
+  --brand-name:          "Arcanus Customs";
+  --brand-mark:          "AC";
+}
+
+/* Set Arcanus Customs as default brand */
+:root {
+  --brand-primary:       #33224f;
+  --brand-primary-hover: #4c3474;
+  --brand-primary-rgb:   51, 34, 79;
+  --brand-accent:        #6b5b8f;
+  --brand-gradient:      linear-gradient(135deg, #33224f 0%, #4c3474 100%);
+  --brand-name:          "Arcanus Customs";
+  --brand-mark:          "AC";
+}

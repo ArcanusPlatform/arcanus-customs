@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HMRC Correspondence Tracking</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #e1eb29eb;
+}
+
+body { 
+  font-family:'Roboto', Arial, sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+  background:#ffffff;
+}
+
+/* Header */
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+
+/* Container */
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+  background:#ffffff;
+}
+
+/* Summary / Info Boxes */
+.summary-box {
+    background:#fdfdf7;
+    border-left:4px solid var(--theme-colour);
+    padding:18px 20px;
+    border-radius:6px;
+    margin-bottom:25px;
+    line-height:1.8;
+}
+
+.section-title {
+    font-size:22px;
+    margin-top:40px;
+    margin-bottom:12px;
+    font-weight:700;
+    color:#333;
+}
+
+/* Tables */
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0;
+  font-size:14px;
+}
+table th {
+  background:var(--theme-colour);
+  color:#000;
+  padding:10px;
+  text-align:left;
+  font-weight:700;
+}
+table td {
+  padding:10px;
+  border:1px solid #d1d5db;
+  vertical-align:top;
+  background:#ffffff;
+}
+table tbody tr:nth-child(even) td {
+  background:#f9fafc;
+}
+
+.checkbox-cell {
+  text-align:center;
+  font-size:16px;
+}
+
+/* Priority Badges */
+.priority-high {
+    color:#b91c1c;
+    font-weight:700;
+}
+.priority-medium {
+    color:#b45309;
+    font-weight:700;
+}
+.priority-low {
+    color:#065f46;
+    font-weight:700;
+}
+
+/* Summary Sections */
+.summary-section {
+    background:#fdfdf7;
+    border-left:4px solid var(--theme-colour);
+    padding:20px;
+    border-radius:6px;
+    margin-bottom:30px;
+}
+
+/* Footer */
+.footer {
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-full">
+    <img src="M_Logo_Yellow.png" class="logo" alt="M Customs Manager Logo">
+    <h1>HMRC Correspondence Tracking</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>Submission Date:</strong> _______________<br>
+    <strong>Current Status:</strong> _______________
+</div>
+
+<!-- Correspondence Log -->
+<h2 class="section-title">Correspondence Log</h2>
+
+<table class="correspondence-table">
+    <thead>
+        <tr>
+            <th style="width: 10%;">Date</th>
+            <th style="width: 12%;">Type</th>
+            <th style="width: 15%;">From / To</th>
+            <th style="width: 28%;">Subject / Summary</th>
+            <th style="width: 12%;">Status</th>
+            <th style="width: 13%;">Action Required</th>
+            <th style="width: 10%;">Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>☐ Email<br>☐ Letter<br>☐ Phone<br>☐ Portal</td>
+            <td></td>
+            <td></td>
+            <td>☐ Sent<br>☐ Received<br>☐ Pending</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>☐ Email<br>☐ Letter<br>☐ Phone<br>☐ Portal</td>
+            <td></td>
+            <td></td>
+            <td>☐ Sent<br>☐ Received<br>☐ Pending</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Milestones -->
+<h2 class="section-title">Key Milestones</h2>
+
+<table class="milestone-table">
+    <thead>
+        <tr>
+            <th>Milestone</th>
+            <th>Target Date</th>
+            <th>Actual Date</th>
+            <th>Status</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Claim Submitted to HMRC</strong></td>
+            <td></td><td></td>
+            <td>☐ Complete<br>☐ Pending</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>HMRC Acknowledgment Received</strong></td>
+            <td></td><td></td>
+            <td>☐ Complete<br>☐ Pending</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>Additional Information Requested</strong></td>
+            <td></td><td></td>
+            <td>☐ Complete<br>☐ Pending<br>☐ N/A</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>Additional Information Provided</strong></td>
+            <td></td><td></td>
+            <td>☐ Complete<br>☐ Pending<br>☐ N/A</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>HMRC Decision Received</strong></td>
+            <td></td><td></td>
+            <td>☐ Complete<br>☐ Pending</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Outstanding Actions -->
+<h2 class="section-title">Outstanding Actions</h2>
+
+<table class="action-table">
+    <thead>
+        <tr>
+            <th>☑</th>
+            <th>Priority</th>
+            <th>Action</th>
+            <th>Responsible</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td><span class="priority-high">URGENT</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td><span class="priority-medium">NORMAL</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- HMRC Contact -->
+<h2 class="section-title">HMRC Contact Information</h2>
+
+<table class="info-table">
+    <tr>
+        <td><strong>HMRC Office:</strong></td>
+        <td>{{claim.office_of_import}}</td>
+    </tr>
+    <tr>
+        <td><strong>Case Officer:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Reference Number:</strong></td>
+        <td>{{claim.reference}}</td>
+    </tr>
+    <tr>
+        <td><strong>Email:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Phone:</strong></td>
+        <td></td>
+    </tr>
+</table>
+
+<!-- Summary Section -->
+<h2 class="section-title">Summary & Next Steps</h2>
+
+<div class="summary-section">
+    <p><strong>Current Status:</strong></p>
+    <div style="padding:10px; background:white; border:1px solid #d1d5db; border-radius:4px; min-height:60px;"></div>
+
+    <p style="margin-top:20px;"><strong>Next Steps:</strong></p>
+    <div style="padding:10px; background:white; border:1px solid #d1d5db; border-radius:4px; min-height:60px;"></div>
+
+    <p style="margin-top:20px;"><strong>Expected Timeline:</strong></p>
+    <div style="padding:10px; background:white; border:1px solid #d1d5db; border-radius:4px; min-height:60px;"></div>
+</div>
+
+<div style="margin-top:30px;">
+    <p><strong>Last Updated:</strong> {{today}}</p>
+    <p><strong>Updated By:</strong> {{agent.contact}}</p>
+</div>
+
+</div>
+
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

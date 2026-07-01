@@ -1,0 +1,54 @@
+/* Login.module.css - Login form component styles */
+
+/* Error message container */
+.errorMessage {
+  color: var(--color-danger);
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Remember me checkbox container */
+.rememberContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Remember me checkbox */
+.checkbox {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* Remember me label */
+.checkboxLabel {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* Forgot password/Sign up section */
+.footerLink {
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.footerLink a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footerLink a:hover {
+  opacity: 0.8;
+}
+
+/* Forgot password link - purple */
+.forgotPasswordLink {
+  color: var(--primary-purple);
+}
+
+/* Sign up link - white */
+.signupLink {
+  color: var(--color-text);
+}

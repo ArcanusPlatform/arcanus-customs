@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Business Structure & EORI Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #FFF800;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Yellow.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Business Structure & EORI Guide</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<h2>Business Structure & EORI Guide</h2>
+<p>Full template content will be applied here.</p>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

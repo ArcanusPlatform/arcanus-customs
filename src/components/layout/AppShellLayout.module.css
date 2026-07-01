@@ -1,0 +1,116 @@
+/* AppShellLayout.module.css - Global layout component styles */
+
+/* Header title - centered, uppercase */
+.headerTitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Top header actions container */
+.headerActions {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Base button styling for header buttons */
+.headerButton {
+  border: 0;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.headerButton:hover {
+  background: var(--color-primary-soft);
+}
+
+/* User username display */
+.userSpan {
+  color: var(--accent-purple);
+  font-size: 0.875rem;
+}
+
+/* Logout button with purple accent */
+.logoutButton {
+  padding: 0.5rem 1rem;
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
+  color: var(--primary-purple);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: var(--color-primary-soft);
+}
+
+/* Divider between nav sections */
+.navDivider {
+  height: 1px;
+  background: var(--color-border-soft);
+  margin: 1rem 0.75rem;
+}
+
+/* Nav item wrapper for hover state tracking */
+.navItemWrapper {
+  position: relative;
+}
+
+/* Nav item button - opacity for disabled state */
+.navButton {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Tooltip for disabled nav items */
+.tooltip {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-chrome);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  border: 1px solid var(--color-border-soft);
+}
+
+/* Arrow pointer for tooltip */
+.tooltipArrow {
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 4px solid var(--color-chrome);
+}

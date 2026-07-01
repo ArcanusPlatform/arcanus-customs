@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cover Letter to HMRC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #000000;
+}
+
+body { 
+  font-family:'Roboto', Arial, sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+
+/* Header */
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 10px 40px;
+}
+.header-full img.logo { width:80px; }
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:0 40px 20px 40px;
+}
+
+/* Content */
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+
+.doc-note {
+  font-size:13px;
+  color:#555;
+  margin:0 40px 20px 40px;
+  font-style:italic;
+}
+
+/* Footer */
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+    <img src="M_Logo_Black.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Cover Letter to HMRC</h1>
+</div>
+<hr class="header-line">
+
+<p class="doc-note"><em>This document accompanies a full C285 claim pack containing all required forms and evidence.</em></p>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<p>
+<strong>To:</strong><br>
+HM Revenue & Customs<br>
+Customs & International Trade<br>
+C285 Repayments Team
+</p>
+
+<p>
+<strong>Date:</strong> {{today}}<br>
+<strong>Trader:</strong> {{trader.name}}<br>
+<strong>Trader EORI:</strong> {{trader.eori}}
+</p>
+
+<h2 style="color:var(--theme-colour); font-size:20px; margin-top:35px; margin-bottom:10px;">
+Re: Submission of C285 Repayment Claim Pack — {{claim.reference}}
+</h2>
+
+<p>
+Dear Sir or Madam,
+</p>
+
+<p>
+Please find enclosed a complete <strong>C285 Repayment Claim Pack</strong> submitted on behalf of 
+<strong>{{trader.name}}</strong> (EORI: <strong>{{trader.eori}}</strong>). This claim relates to 
+import declaration(s) for which duty and/or VAT has been overpaid. The enclosed documents support 
+our request for repayment in accordance with the relevant provisions of the <em>Taxation (Cross-border Trade) Act 2018</em>.
+</p>
+
+<h3 style="color:var(--theme-colour); margin-top:30px; font-size:16px;">Enclosed Documents</h3>
+
+<p>The following documents are included within this claim pack:</p>
+
+<ul style="margin-left:20px; line-height:1.7;">
+  <li><strong>Completed C285 Claim Form</strong></li>
+  <li><strong>Duty & VAT Calculation Summary</strong></li>
+  <li><strong>Tariff / Valuation / Origin Explanations</strong> (as applicable)</li>
+  <li><strong>Evidence Pack Index</strong></li>
+  <li><strong>Supporting Evidence</strong> including:
+    <ul style="margin-left:18px;">
+      <li>Import declarations (CDS/CHIEF)</li>
+      <li>Commercial invoices & packing lists</li>
+      <li>Transport documents</li>
+      <li>Tariff classification references or rulings</li>
+      <li>Any supplementary documents relevant to the claim</li>
+    </ul>
+  </li>
+  <li><strong>Agent Authority Letter</strong> (where required)</li>
+</ul>
+
+<h3 style="color:var(--theme-colour); margin-top:30px; font-size:16px;">Claim Summary</h3>
+
+<p>
+The total amount being claimed is:
+</p>
+
+<p style="font-size:16px; font-weight:700; color:var(--theme-colour);">
+£{{claim.total_claim_amount}}
+</p>
+
+<p>
+This value is based on verified calculations and evidence enclosed within the pack.
+</p>
+
+<h3 style="color:var(--theme-colour); margin-top:30px; font-size:16px;">Agent Representation</h3>
+
+<p>
+This claim has been prepared and submitted by <strong>{{agent.company}}</strong> acting as an authorised agent for 
+<strong>{{trader.name}}</strong>. A signed <strong>Agent Authority Letter</strong> is included.
+</p>
+
+<h3 style="color:var(--theme-colour); margin-top:30px; font-size:16px;">Request</h3>
+
+<p>
+We kindly request that HMRC review the enclosed documentation and process the repayment accordingly.  
+If HMRC require any further information, clarification, or additional evidence, please contact:
+</p>
+
+<p>
+<strong>Agent Contact:</strong> {{agent.contact}}<br>
+<strong>Email:</strong> {{agent.email}}<br>
+<strong>Phone:</strong> {{agent.phone}}
+</p>
+
+<p>
+We appreciate your time and attention in reviewing this claim.
+</p>
+
+<p>Yours faithfully,<br><br>
+<strong>{{agent.company}}</strong><br>
+on behalf of {{trader.name}}
+</p>
+
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

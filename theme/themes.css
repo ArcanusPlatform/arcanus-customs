@@ -1,0 +1,156 @@
+/* =============================================================
+   @arcanus/theme — themes.css
+   SEMANTIC TOKENS (tier 2)
+   -------------------------------------------------------------
+   Maps the raw primitives to UI ROLES. This is the layer apps
+   and components should consume. Switch the whole product by
+   toggling  data-theme="dark" | "light"  on <html> (or any
+   subtree). Default (no attribute) = dark.
+
+   Migration note vs the old global.css:
+     - --gold / --gold-600 used to alias purple silently. They are
+       kept as deprecated aliases of the primary tokens so existing
+       markup keeps working — prefer --color-primary going forward.
+     - The old `.dark` block re-skinned the accent to BLUE, fighting
+       the brand. Removed: dark is now the canonical purple theme.
+   ============================================================= */
+
+/* ---------- DARK (default) -------------------------------- */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --color-bg:            var(--slate-950);
+  --color-bg-elevated:   var(--slate-900);
+  --color-surface:       var(--slate-800);
+  --color-surface-2:     #232f43;          /* between 800 and 700 */
+  --color-surface-hover: var(--slate-700);
+
+  /* Chrome (topbar / sidebar) */
+  --color-chrome:        #0b1120;
+  --color-chrome-2:      var(--slate-900);
+
+  /* Text */
+  --color-text:          var(--slate-100);
+  --color-text-muted:    var(--slate-400);
+  --color-text-subtle:   var(--slate-500);
+  --color-text-on-primary: #ffffff;
+
+  /* Lines */
+  --color-border:        var(--slate-700);
+  --color-border-soft:   rgba(148, 163, 184, 0.14);
+  --color-border-brand:  rgba(var(--brand-primary-rgb), var(--brand-border-a));
+
+  /* Brand / primary — resolved through the white-label layer */
+  --color-primary:       var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-soft:  rgba(var(--brand-primary-rgb), var(--brand-soft-a));
+  --color-accent:        var(--brand-accent);
+  --color-ring:          var(--brand-primary-hover);
+  --brand-soft-a:        0.14;
+  --brand-border-a:      0.30;
+  --brand-focus-a:       0.35;
+
+  /* Status (fg / soft bg) */
+  --color-success:       var(--green-400);
+  --color-success-soft:  rgba(34, 197, 94, 0.14);
+  --color-warning:       var(--amber-400);
+  --color-warning-soft:  rgba(245, 158, 11, 0.14);
+  --color-danger:        var(--red-400);
+  --color-danger-soft:   rgba(239, 68, 68, 0.14);
+  --color-info:          var(--blue-400);
+  --color-info-soft:     rgba(59, 130, 246, 0.14);
+
+  /* Elevation — restrained, neutral. Glow reserved for focus. */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg:  0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-focus: 0 0 0 3px rgba(var(--brand-primary-rgb), var(--brand-focus-a));
+  --gradient-brand: var(--brand-gradient);
+
+  /* Brand glow — reserved for hero moments (splash, brand header).
+     Tenant-tinted via the brand rgb triplet. */
+  --glow-brand:      0 0 0 1px rgba(var(--brand-primary-rgb),0.40), 0 0 24px rgba(var(--brand-primary-rgb),0.45), 0 0 60px rgba(var(--brand-primary-rgb),0.25);
+  --glow-brand-hover:0 0 0 1px rgba(var(--brand-primary-rgb),0.55), 0 0 30px rgba(var(--brand-primary-rgb),0.60), 0 0 72px rgba(var(--brand-primary-rgb),0.35);
+
+  /* Premium gold — the Assist family's single accent. Consolidates
+     the three stray golds (240,200,75 / 212,175,55 / 200,166,82). */
+  --color-gold:      #d4af37;
+  --color-gold-soft: rgba(212, 175, 55, 0.28);
+
+  /* Glassmorphism — Assist drawer / floating surfaces. */
+  --glass-bg:        rgba(20, 24, 38, 0.72);
+  --glass-border:    rgba(124, 58, 237, 0.30);
+  --glass-blur:      blur(16px);
+
+  /* Deprecated aliases — kept so legacy markup compiles. */
+  --gold:        var(--color-accent);
+  --gold-600:    var(--color-primary);
+  --gold-tint:   var(--color-primary-soft);
+  --bg-page:     var(--color-bg);
+  --bg-card:     var(--color-surface);
+  --card-bg:     var(--color-surface);
+  --nav-bg:      var(--color-chrome);
+  --header-bg:   var(--color-chrome);
+  --text-light:  var(--color-text);
+  --text-dark:   var(--color-text-muted);
+  --text-muted:  var(--color-text-muted);
+  --border:      var(--color-border);
+}
+
+/* ---------- LIGHT ----------------------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg:            var(--slate-50);
+  --color-bg-elevated:   #ffffff;
+  --color-surface:       #ffffff;
+  --color-surface-2:     var(--slate-50);
+  --color-surface-hover: var(--slate-100);
+
+  /* Chrome stays dark in light theme too — the product's signature
+     is dark navy topbar + sidebar wrapping a light content area. */
+  --color-chrome:        #0b1120;
+  --color-chrome-2:      var(--slate-900);
+
+  --color-text:          var(--slate-900);
+  --color-text-muted:    var(--slate-500);
+  --color-text-subtle:   var(--slate-400);
+  --color-text-on-primary: #ffffff;
+
+  --color-border:        var(--slate-200);
+  --color-border-soft:   var(--slate-200);
+  --color-border-brand:  rgba(var(--brand-primary-rgb), var(--brand-border-a));
+
+  --color-primary:       var(--brand-primary);
+  --color-primary-hover: var(--brand-primary-hover);
+  --color-primary-soft:  rgba(var(--brand-primary-rgb), var(--brand-soft-a));
+  --color-accent:        var(--brand-primary);
+  --color-ring:          var(--brand-primary-hover);
+  --brand-soft-a:        0.08;
+  --brand-border-a:      0.22;
+  --brand-focus-a:       0.20;
+
+  --color-success:       var(--green-600);
+  --color-success-soft:  rgba(34, 197, 94, 0.12);
+  --color-warning:       var(--amber-600);
+  --color-warning-soft:  rgba(245, 158, 11, 0.14);
+  --color-danger:        var(--red-600);
+  --color-danger-soft:   rgba(239, 68, 68, 0.10);
+  --color-info:          var(--blue-600);
+  --color-info-soft:     rgba(59, 130, 246, 0.10);
+
+  --shadow-sm:  0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md:  0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg:  0 16px 40px rgba(15, 23, 42, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(var(--brand-primary-rgb), var(--brand-focus-a));
+  --gradient-brand: var(--brand-gradient);
+  --glow-brand:      0 0 0 1px rgba(var(--brand-primary-rgb),0.30), 0 0 20px rgba(var(--brand-primary-rgb),0.28), 0 8px 28px rgba(var(--brand-primary-rgb),0.18);
+  --glow-brand-hover:0 0 0 1px rgba(var(--brand-primary-rgb),0.40), 0 0 26px rgba(var(--brand-primary-rgb),0.36), 0 8px 32px rgba(var(--brand-primary-rgb),0.24);
+  --color-gold:      #b8901f;
+  --color-gold-soft: rgba(184, 144, 31, 0.20);
+  --glass-bg:        rgba(255, 255, 255, 0.78);
+  --glass-border:    rgba(124, 58, 237, 0.22);
+  --glass-blur:      blur(16px);
+}

@@ -1,0 +1,5 @@
+/* Import responsive theme system (semantic tokens, components, mobile breakpoints) */
+@import '../theme/index.css';
+
+/* Customs app bridge (Tailwind + legacy class aliases resolved through theme tokens) */
+@import './styles/global.css';

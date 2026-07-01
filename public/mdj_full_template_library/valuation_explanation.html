@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valuation Explanation</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #D88414;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Orange.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Valuation Explanation</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Original Customs Value:</strong> £_______________<br>
+    <strong>Correct Customs Value:</strong> £_______________<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">1. Transaction Overview</h2>
+
+<table class="transaction-table">
+    <tr>
+        <td style="width: 40%;"><strong>Supplier:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Buyer:</strong></td>
+        <td>{{trader.name}}</td>
+    </tr>
+    <tr>
+        <td><strong>Invoice Number:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Invoice Date:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Invoice Currency:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Incoterms:</strong></td>
+        <td>_______________</td>
+    </tr>
+</table>
+
+<h2 class="section-title">2. Valuation Method</h2>
+
+<div class="method-box">
+    <p style="margin-top: 0;"><strong>Primary Valuation Method:</strong></p>
+    <p>☐ <strong>Method 1:</strong> Transaction Value (Article 70 UCC)</p>
+    <p>☐ <strong>Method 2:</strong> Transaction Value of Identical Goods</p>
+    <p>☐ <strong>Method 3:</strong> Transaction Value of Similar Goods</p>
+    <p>☐ <strong>Method 4:</strong> Deductive Method</p>
+    <p>☐ <strong>Method 5:</strong> Computed Method</p>
+    <p>☐ <strong>Method 6:</strong> Fall-back Method</p>
+</div>
+
+<h3 class="subsection-title">2.1 Transaction Value Basis</h3>
+
+<div class="info-box">
+    <p style="margin-top: 0;"><strong>Conditions for Transaction Value:</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 5%;">☐</td>
+            <td style="border: none;">Sale for export to UK</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">No restrictions on use or disposal</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Sale not subject to conditions that cannot be quantified</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">No proceeds accrue to seller</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Parties not related, or relationship did not influence price</td>
+        </tr>
+    </table>
+</div>
+
+<h2 class="section-title">3. Customs Value Calculation</h2>
+
+<h3 class="subsection-title">3.1 Original Valuation (As Declared)</h3>
+
+<table class="valuation-table">
+    <tr>
+        <td style="width: 60%;">Invoice Price</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Transport to UK Border</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Insurance</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Loading/Handling Charges</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Other Adjustments</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr style="background: #f4f7fb; font-weight: 700;">
+        <td>ORIGINAL CUSTOMS VALUE</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+</table>
+
+<h3 class="subsection-title">3.2 Correct Valuation</h3>
+
+<table class="valuation-table">
+    <tr>
+        <td style="width: 60%;">Invoice Price</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Transport to UK Border</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Insurance</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Loading/Handling Charges</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr>
+        <td>Other Adjustments</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr style="background: #e8f5e9; font-weight: 700;">
+        <td>CORRECT CUSTOMS VALUE</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+    <tr style="background: #fff3cd; font-weight: 700;">
+        <td>DIFFERENCE (Overvaluation)</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+</table>
+
+<h2 class="section-title">4. Valuation Adjustments</h2>
+
+<h3 class="subsection-title">4.1 Additions to Transaction Value</h3>
+
+<div class="adjustment-box">
+    <p style="margin-top: 0;"><strong>Items to be Added (if not included in invoice price):</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 5%;">☐</td>
+            <td style="border: none; width: 60%;">Commissions (except buying commissions)</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Brokerage</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Containers and packing</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Materials, components supplied by buyer</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Tools, dies, moulds supplied by buyer</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Engineering, development work</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Royalties and license fees</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Proceeds of resale accruing to seller</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+    </table>
+</div>
+
+<h3 class="subsection-title">4.2 Deductions from Transaction Value</h3>
+
+<div class="adjustment-box">
+    <p style="margin-top: 0;"><strong>Items to be Deducted (if included in invoice price):</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 5%;">☐</td>
+            <td style="border: none; width: 60%;">Transport after UK border</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Construction, installation after import</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">UK import duties and taxes</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Interest charges (if separately identified)</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Buying commissions</td>
+            <td style="border: none; text-align: right;">£_______________</td>
+        </tr>
+    </table>
+</div>
+
+<h2 class="section-title">5. Related Party Considerations</h2>
+
+<div class="related-party-box">
+    <p style="margin-top: 0;"><strong>Relationship Status:</strong></p>
+    <p>☐ Parties are not related</p>
+    <p>☐ Parties are related but relationship did not influence price</p>
+    <p>☐ Parties are related and alternative valuation method required</p>
+    
+    <p style="margin-top: 15px;"><strong>If Related, Explanation:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">6. Currency Conversion</h2>
+
+<table class="currency-table">
+    <tr>
+        <td style="width: 40%;"><strong>Invoice Currency:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Invoice Amount:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Exchange Rate Used:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Exchange Rate Date:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>GBP Equivalent:</strong></td>
+        <td>£_______________</td>
+    </tr>
+</table>
+
+<h2 class="section-title">7. Regulatory References</h2>
+
+<div class="reference-box">
+    <p><strong>Union Customs Code:</strong> Articles 70-74 (Customs Value)</p>
+    <p><strong>WTO Valuation Agreement:</strong> Agreement on Implementation of Article VII of GATT</p>
+    <p><strong>HMRC Guidance:</strong> Notice 252 - Valuation of imported goods for customs purposes</p>
+    <p><strong>Additional References:</strong> _______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">8. Conclusion</h2>
+
+<div class="conclusion-box">
+    <p style="margin-top: 0;"><strong>Valuation Summary:</strong></p>
+    <p>
+    The correct customs value for this transaction is <strong>£_______________</strong>, 
+    representing a reduction of <strong>£_______________</strong> from the originally declared value.
+    </p>
+    
+    <p style="margin-top: 15px;"><strong>Reason for Adjustment:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Financial Impact:</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 60%;">Duty Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.duty_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">VAT Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.vat_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none; border-top: 2px solid #002d62;">
+            <td style="border: none; padding-top: 5px;"><strong>Total Refund Due:</strong></td>
+            <td style="border: none; text-align: right; padding-top: 5px;"><strong>£{{claim.total_claim_amount}}</strong></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 30px;">
+    <p><strong>Prepared By:</strong> {{agent.contact}}</p>
+    <p><strong>Date:</strong> {{today}}</p>
+    <p><strong>Organisation:</strong> {{agent.company}}</p>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

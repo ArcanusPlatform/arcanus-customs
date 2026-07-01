@@ -1,0 +1,125 @@
+/* UniversalPageHeader.module.css - Page header component styles */
+
+.header {
+  position: relative;
+}
+
+.header[data-theme='purple'] {
+  border-bottom-color: var(--color-border-brand);
+  box-shadow: inset 0 -3px 0 var(--color-primary);
+}
+
+.header[data-theme='black'] {
+  border-bottom-color: var(--color-border-soft);
+  box-shadow: inset 0 -3px 0 var(--color-chrome);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer[data-theme='purple'] {
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+.logoContainer[data-theme='black'] {
+  box-shadow: 0 0 0 4px var(--color-border-soft);
+}
+
+.logoImage {
+  max-height: 2.25rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.breadcrumbLink {
+  cursor: pointer;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  color: var(--color-text-subtle);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.badge[data-theme='purple'] {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.badge[data-theme='black'] {
+  background-color: var(--color-border-soft);
+  color: var(--color-text);
+}
+
+.subtitle {
+  max-width: 48rem;
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.meta {
+  max-width: 40rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.875rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media print {
+  .actions {
+    display: none;
+  }
+}

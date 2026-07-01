@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Missing Information Notice</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #D80000;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+  background: #f9fafc;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+  background: white;
+}
+.summary-box {
+  background: #f4f7fb;
+  border: 1px solid #d1d5db;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.section-title {
+  margin-top:40px;
+  margin-bottom:15px;
+  font-size:20px;
+  font-weight:700;
+  color: var(--theme-colour);
+}
+.request-table, .tracking-table {
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:25px;
+  font-size:14px;
+}
+.request-table th, .request-table td,
+.tracking-table th, .tracking-table td {
+  border:1px solid #d1d5db;
+  padding:10px;
+}
+.request-table th {
+  background:#f4f7fb;
+  font-weight:700;
+}
+.priority-high {
+  color:#b91c1c;
+  font-weight:700;
+}
+.priority-medium {
+  color:#c2410c;
+  font-weight:700;
+}
+.priority-low {
+  color:#4b5563;
+  font-weight:700;
+}
+.method-box, .info-box {
+  background:#f9fafc;
+  border:1px solid #d1d5db;
+  padding:15px 20px;
+  border-radius:6px;
+  margin-bottom:20px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+<div class="header-full">
+    <img src="M_Logo_Red.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Missing Information Notice</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>Date Issued:</strong> {{today}}<br>
+    <strong>Response Required By:</strong> _______________
+</div>
+
+<!-- RED ALERT BLOCK -->
+<div style="background: #FCE3E3; border-left: 4px solid #D80000; padding: 20px; margin-bottom: 30px; border-radius: 6px;">
+    <h3 style="text-align: center; margin: 0 0 10px 0; color: #6B0000; font-size: 18px; font-weight: 700;">
+        🚨 Information Required
+    </h3>
+    <p style="margin: 0; color: #6B0000; font-size: 15px;">
+        We need additional information to complete your C285 claim. Please provide the requested items by the deadline shown above.
+    </p>
+</div>
+
+<p>Dear {{trader.contact_name}},</p>
+
+<p>
+We are currently preparing your C285 repayment claim (Reference: <strong>{{claim.reference}}</strong>) for submission to HMRC. To complete the claim package, we require the following additional information and documentation.
+</p>
+
+<h2 class="section-title">Required Information</h2>
+
+<table class="request-table">
+    <thead>
+        <tr>
+            <th style="width: 5%;">☑</th>
+            <th style="width: 10%;">Priority</th>
+            <th style="width: 40%;">Item Required</th>
+            <th style="width: 30%;">Purpose</th>
+            <th style="width: 15%;">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-medium">MEDIUM</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-medium">MEDIUM</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-low">LOW</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>☐</td>
+            <td><span class="priority-low">LOW</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="info-box">
+    <p style="margin-top: 0;"><strong>Priority Levels:</strong></p>
+    <ul style="margin-bottom: 0;">
+        <li><strong>HIGH:</strong> Essential for claim submission - claim cannot proceed without these items</li>
+        <li><strong>MEDIUM:</strong> Important for claim strength - may affect approval likelihood</li>
+        <li><strong>LOW:</strong> Supporting information - helpful but not critical</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Submission Instructions</h2>
+
+<p>Please provide the requested information by <strong>_______________</strong> using one of the following methods:</p>
+
+<div class="method-box">
+    <h4 style="margin-top: 0; color: #002d62;">📧 Email (Preferred)</h4>
+    <p>Send documents to: <strong>{{agent.email}}</strong></p>
+    <p style="font-size: 13px; color: #6b7280;">Please reference claim number {{claim.reference}} in the subject line</p>
+</div>
+
+<div class="method-box">
+    <h4 style="margin-top: 0; color: #002d62;">📤 Secure Upload</h4>
+    <p>Upload via our secure portal: [Portal URL]</p>
+    <p style="font-size: 13px; color: #6b7280;">Login credentials provided separately</p>
+</div>
+
+<div class="method-box">
+    <h4 style="margin-top: 0; color: #002d62;">📮 Post</h4>
+    <p>
+    {{agent.company}}<br>
+    {{agent.address}}<br>
+    {{agent.city}}, {{agent.postcode}}<br>
+    {{agent.country}}
+    </p>
+    <p style="font-size: 13px; color: #6b7280;">Please mark envelope "URGENT - Claim {{claim.reference}}"</p>
+</div>
+
+<h2 class="section-title">Document Requirements</h2>
+
+<div class="info-box">
+    <p style="margin-top: 0;"><strong>Please ensure all documents:</strong></p>
+    <ul style="margin-bottom: 0;">
+        <li>Are clear and legible</li>
+        <li>Show all relevant information</li>
+        <li>Are in English or include translations</li>
+        <li>Include all pages</li>
+        <li>Are labelled with the claim reference number</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Impact of Delay</h2>
+
+<ul>
+    <li>Claim submission to HMRC will be delayed</li>
+    <li>The 3-year statutory time limit may be affected</li>
+    <li>Claim strength could be reduced</li>
+    <li>Additional follow-ups may be necessary</li>
+</ul>
+
+<div style="background: #e3f2fd; border-left: 4px solid #1976d2; padding: 16px; margin: 20px 0;">
+    <p style="margin: 0; font-size: 13px; color: #1565c0;">
+        <strong>💡 Need Help?</strong> If you have difficulty obtaining any requested items, please contact us immediately.
+    </p>
+</div>
+
+<h2 class="section-title">Follow-Up Tracking</h2>
+
+<table class="tracking-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Contact Method</th>
+            <th>Response</th>
+            <th>Items Received</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{today}}</td>
+            <td>Initial Notice Sent</td>
+            <td>—</td>
+            <td>—</td>
+        </tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+</table>
+
+<p style="margin-top: 30px;">
+If you have any questions, please don't hesitate to contact me.
+</p>
+
+<p>
+<strong>Best regards,</strong><br><br>
+{{agent.contact}}<br>
+{{agent.company}}<br>
+Email: {{agent.email}}<br>
+Phone: {{agent.phone}}
+</p>
+
+</div>
+
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

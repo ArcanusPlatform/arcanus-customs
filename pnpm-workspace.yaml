@@ -1,0 +1,6 @@
+packages:
+  - backend
+
+onlyBuiltDependencies:
+  - bcrypt
+  - better-sqlite3

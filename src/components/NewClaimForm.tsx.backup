@@ -1,0 +1,59 @@
+import { useState, useEffect } from 'react';
+import { X, Plus, Trash2, Save, User, Users, AlertCircle, CheckCircle2, Info } from 'lucide-react';
+import { claimsAPI, contactsAPI } from '@/lib/api-service';
+import { useSettings } from '@/contexts/SettingsContext';
+import type { C285Claim, C285ClaimItem, ClaimReason } from '@/types/c285.types';
+import type { Contact } from '@/types/contact.types';
+import { determineAuthorityRequirement, determineRefundDestinations, validateClaimIdentity } from '@/lib/authority-logic';
+import ContactModal from '@/components/ContactModal';
+
+interface NewClaimFormProps {
+  onClose: () => void;
+  onSuccess: (claim: C285Claim) => void;
+}
+
+interface ClaimItemFormData {
+  id: string;
+  item_number: number;
+  commodity_code: string;
+  description: string;
+  invoice_value: number;
+  original_duty: number;
+  correct_duty: number;
+  original_vat: number;
+  correct_vat: number;
+  original_excise: number;
+  correct_excise: number;
+}
+
+export default function NewClaimForm({ onClose, onSuccess }: NewClaimFormProps) {
+  const { settings } = useSettings();
+  
+  // Contact management
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [showContactModal, setShowContactModal] = useState(false);
+  
+  // STAGE 1: Declaration fields
+  const [mrn, setMrn] = useState('');
+  const [entryNumber, setEntryNumber] = useState('');
+  const [acceptanceDate, setAcceptanceDate] = useState('');
+  
+  // Claim details
+  const [reason, setReason] = useState<ClaimReason>('tariff_code_error');
+  const [reasonDescription, setReasonDescription] = useState('');
+  const [items, setItems] = useState<ClaimItemFormData[]>([]);
+  
+  // STAGE 4: Payment routing
+  const [paymentMethod, setPaymentMethod] = useState<'bank_transfer' | 'cheque' | 'deferment_account'>('bank_transfer');
+  const [refundDestination, setRefundDestination] = useState<'claimant' | 'agent'>('claimant');
+  const [bankDetails, setBankDetails] = useState({
+    account_name: '',
+    account_number: '',
+    sort_code: '',
+    iban: '',
+    swift: '',
+  });
+  
+  const [isSaving, setIsSaving] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});

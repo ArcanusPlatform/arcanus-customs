@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bank Details Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #D80000;
+}
+
+/* GLOBAL */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #fafafa;
+}
+
+/* HEADER */
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 5px 40px;
+}
+
+.header-full img.logo {
+  width: 80px;
+}
+
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  margin: 0;
+}
+
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 5px 0 10px 0;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* TITLES */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: var(--theme-colour);
+  border-left: 4px solid var(--theme-colour);
+  padding-left: 10px;
+}
+
+/* BOXES */
+.summary-box {
+  background: #fff7f7;
+  border-left: 4px solid var(--theme-colour);
+  padding: 18px 22px;
+  border-radius: 6px;
+  margin: 10px 0 30px 0;
+}
+
+.info-box {
+  background: #fff7f7;
+  border-left: 4px solid var(--theme-colour);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+/* FORM STRUCTURE */
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.field-label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.field-value {
+  padding: 10px;
+  background: #f8fafc;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.field-help {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* DECLARATION BOX */
+.declaration-box {
+  background: #fff7f7;
+  border-left: 4px solid var(--theme-colour);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.declaration-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+  <img src="M_Logo_Red.png" class="logo" alt="M Assist Logo">
+  <h1>Bank Details Verification</h1>
+</div>
+<hr class="header-line">
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+
+<!-- SUMMARY -->
+<div class="summary-box">
+  <strong>Trader:</strong> {{trader.name}}<br>
+  <strong>EORI:</strong> {{trader.eori}}<br>
+  <strong>Date:</strong> {{today}}
+</div>
+
+<!-- WARNING -->
+<div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; margin-bottom: 30px; border-radius: 6px;">
+  <p style="margin: 0; font-weight: 600; color: #856404;">
+    ⚠️ <strong>Important:</strong> Bank details must match the registered business name.
+    HMRC will only make repayments into an account held by the claimant.
+  </p>
+</div>
+
+<!-- BANK ACCOUNT INFO -->
+<h2 class="section-title">Bank Account Information</h2>
+
+<div class="form-section">
+
+  <div class="form-field">
+    <label class="field-label">Account Holder Name <span class="required">*</span></label>
+    <div class="field-value">{{bank.account_name}}</div>
+    <div class="field-help">Must match the registered business name: {{trader.name}}</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Bank Name <span class="required">*</span></label>
+    <div class="field-value">{{bank.bank_name}}</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Bank Address</label>
+    <div class="field-value">{{bank.address}}</div>
+    <div class="field-help">Full address of bank branch</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Sort Code <span class="required">*</span></label>
+    <div class="field-value">{{bank.sort_code}}</div>
+    <div class="field-help">Format: XX-XX-XX</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Account Number <span class="required">*</span></label>
+    <div class="field-value">{{bank.account_number}}</div>
+    <div class="field-help">8-digit UK bank account number</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Account Type</label>
+    <div class="field-value">
+      ☐ Business Current Account &nbsp;&nbsp;
+      ☐ Business Savings Account &nbsp;&nbsp;
+      ☐ Other: _______________
+    </div>
+  </div>
+
+</div>
+
+<!-- INTL BANK DETAILS -->
+<h2 class="section-title">International Bank Details (if applicable)</h2>
+
+<div class="form-section">
+
+  <div class="form-field">
+    <label class="field-label">IBAN</label>
+    <div class="field-value">{{bank.iban}}</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">SWIFT / BIC</label>
+    <div class="field-value">{{bank.swift_bic}}</div>
+  </div>
+
+  <div class="form-field">
+    <label class="field-label">Currency</label>
+    <div class="field-value">
+      ☐ GBP (£) &nbsp;&nbsp; ☐ EUR (€) &nbsp;&nbsp; ☐ USD ($) &nbsp;&nbsp; ☐ Other: _______________
+    </div>
+  </div>
+
+</div>
+
+<!-- VERIFICATION CHECKLIST -->
+<h2 class="section-title">Verification Checklist</h2>
+
+<div class="info-box">
+  <p style="margin-top: 0;"><strong>Please attach ONE of the following:</strong></p>
+  <ul>
+    <li>☐ Recent bank statement (last 3 months)</li>
+    <li>☐ Bank letter confirming account details</li>
+    <li>☐ Cancelled cheque showing account details</li>
+    <li>☐ Online banking screenshot showing account details</li>
+  </ul>
+</div>
+
+<!-- TIP BOX -->
+<div style="background: #e3f2fd; border-left: 4px solid #1976d2; padding: 16px; margin: 20px 0; border-radius: 6px;">
+  <p style="margin: 0; font-size: 13px; color: #1565c0;">
+    💡 <strong>Tip:</strong> The verification document must clearly show  
+    the account holder name, sort code, and account number.
+  </p>
+</div>
+
+<!-- DECLARATION -->
+<h2 class="section-title">Declaration and Authorization</h2>
+
+<div class="declaration-box">
+  <p>I/We declare that:</p>
+  <ul>
+    <li>The bank details provided are accurate and current</li>
+    <li>The account belongs to {{trader.name}}</li>
+    <li>I/We authorize HMRC to repay duties/VAT into this account</li>
+    <li>I/We will notify HMRC and {{agent.company}} of any changes</li>
+  </ul>
+
+  <p style="margin-top: 20px;">
+    This authorization applies to the following claim(s):
+  </p>
+
+  <table style="margin: 20px 0; border-collapse: collapse; width: 100%;">
+    <tr>
+      <th style="background: #f4f7fb; padding: 10px; border: 1px solid #d1d5db;">Claim Reference</th>
+      <th style="background: #f4f7fb; padding: 10px; border: 1px solid #d1d5db;">MRN</th>
+      <th style="background: #f4f7fb; padding: 10px; border: 1px solid #d1d5db;">Claim Amount</th>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid #d1d5db;">{{claim.reference}}</td>
+      <td style="padding: 10px; border: 1px solid #d1d5db;">{{claim.mrn}}</td>
+      <td style="padding: 10px; border: 1px solid #d1d5db;">£{{claim.total_claim_amount}}</td>
+    </tr>
+  </table>
+
+</div>
+
+<!-- SIGNATORY -->
+<h2 class="section-title">Authorized Signatory</h2>
+
+<div class="form-section">
+  <table style="border: none; width: 100%;">
+    <tr>
+      <td style="border: none; width: 50%; padding-right: 20px;">
+        <p><strong>Signature:</strong></p>
+        <p style="border-bottom: 2px solid #000; height: 50px;"></p>
+      </td>
+      <td style="border: none;">
+        <p><strong>Date:</strong></p>
+        <p style="border-bottom: 2px solid #000; height: 50px;"></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border: none; padding-top: 20px;" colspan="2">
+        <p><strong>Name:</strong> {{trader.contact_name}}</p>
+        <p><strong>Position:</strong> __________________________</p>
+        <p><strong>Company:</strong> {{trader.name}}</p>
+        <p><strong>Email:</strong> {{trader.contact_email}}</p>
+        <p><strong>Phone:</strong> {{trader.contact_phone}}</p>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 30px; padding: 15px; background: #f9fafc; border: 1px solid #d1d5db; border-radius: 6px;">
+    <strong>Company Stamp (if applicable):</strong>
+    <div style="border: 1px dashed #999; height: 80px; margin-top: 10px;"></div>
+  </div>
+</div>
+
+<!-- DATA PROTECTION -->
+<div style="margin-top: 30px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px;">
+  <p style="margin: 0; font-size: 13px; color: #856404;">
+    ⚠️ <strong>Data Protection Notice:</strong>
+    Your bank details will be processed in accordance with UK GDPR and the Data Protection Act 2018 
+    for customs repayment purposes. Records will be retained for a minimum of 4 years.
+  </p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  {settings.business_name}<br>
+  {settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+  Email: {settings.email} | Phone: {settings.phone}<br>
+  <em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+  © {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

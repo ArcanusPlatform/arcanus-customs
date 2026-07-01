@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Invoice & Packing List Matching Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #000000;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Black.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Invoice & Packing List Matching Template</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Invoice Number:</strong> _______________<br>
+    <strong>Packing List Number:</strong> _______________<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">Document Information</h2>
+
+<table class="info-table">
+    <tr>
+        <th colspan="2" style="background: #002d62; color: white;">Commercial Invoice Details</th>
+    </tr>
+    <tr>
+        <td style="width: 30%;"><strong>Invoice Number:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Invoice Date:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Supplier:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Total Invoice Value:</strong></td>
+        <td></td>
+    </tr>
+</table>
+
+<table class="info-table" style="margin-top: 20px;">
+    <tr>
+        <th colspan="2" style="background: #002d62; color: white;">Packing List Details</th>
+    </tr>
+    <tr>
+        <td style="width: 30%;"><strong>Packing List Number:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Packing List Date:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Total Packages:</strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><strong>Total Gross Weight:</strong></td>
+        <td></td>
+    </tr>
+</table>
+
+<h2 class="section-title">Line-by-Line Comparison</h2>
+
+<table class="comparison-table">
+    <thead>
+        <tr>
+            <th rowspan="2">Line</th>
+            <th rowspan="2">Description</th>
+            <th colspan="2">Invoice</th>
+            <th colspan="2">Packing List</th>
+            <th rowspan="2">Match Status</th>
+            <th rowspan="2">Notes</th>
+        </tr>
+        <tr>
+            <th>Qty</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="status-cell">☐ Match<br>☐ Discrepancy</td>
+            <td class="notes-cell"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Discrepancies Identified</h2>
+
+<table class="discrepancy-table">
+    <thead>
+        <tr>
+            <th style="width: 10%;">Line</th>
+            <th style="width: 25%;">Type of Discrepancy</th>
+            <th style="width: 30%;">Description</th>
+            <th style="width: 20%;">Impact</th>
+            <th style="width: 15%;">Resolution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>☐ Quantity Mismatch<br>☐ Description Difference<br>☐ Missing Item<br>☐ Extra Item<br>☐ Other</td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>☐ Quantity Mismatch<br>☐ Description Difference<br>☐ Missing Item<br>☐ Extra Item<br>☐ Other</td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>☐ Quantity Mismatch<br>☐ Description Difference<br>☐ Missing Item<br>☐ Extra Item<br>☐ Other</td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>☐ Quantity Mismatch<br>☐ Description Difference<br>☐ Missing Item<br>☐ Extra Item<br>☐ Other</td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+            <td class="notes-cell"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Summary and Conclusion</h2>
+
+<div class="summary-section">
+    <table style="border: none;">
+        <tr style="border: none;">
+            <td style="border: none; width: 50%; padding-right: 20px;">
+                <p><strong>Total Lines Compared:</strong> _______</p>
+                <p><strong>Lines Matching:</strong> _______</p>
+                <p><strong>Lines with Discrepancies:</strong> _______</p>
+            </td>
+            <td style="border: none; width: 50%;">
+                <p><strong>Overall Match Rate:</strong> _______%</p>
+                <p><strong>Critical Discrepancies:</strong> _______</p>
+                <p><strong>Minor Discrepancies:</strong> _______</p>
+            </td>
+        </tr>
+    </table>
+    
+    <div style="margin-top: 20px; padding: 15px; background: #f9fafc; border-left: 4px solid #002d62;">
+        <p style="margin: 0;"><strong>Overall Assessment:</strong></p>
+        <div style="padding: 15px; margin-top: 10px;">
+            ☐ <strong>Full Match</strong> - Invoice and packing list align completely<br>
+            ☐ <strong>Minor Discrepancies</strong> - Small differences that don't affect customs value<br>
+            ☐ <strong>Significant Discrepancies</strong> - Differences requiring investigation or correction
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <p><strong>Additional Comments / Action Required:</strong></p>
+        <div style="border: 1px solid #d1d5db; min-height: 100px; padding: 10px; background: white;">
+            
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 30px;">
+    <table style="border: none;">
+        <tr style="border: none;">
+            <td style="border: none; width: 50%; padding-right: 20px;">
+                <p><strong>Reviewed By:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 40px; margin-top: 10px;"></p>
+            </td>
+            <td style="border: none; width: 50%;">
+                <p><strong>Date:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 40px; margin-top: 10px;"></p>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

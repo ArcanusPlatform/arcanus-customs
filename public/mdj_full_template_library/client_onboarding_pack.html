@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Client Onboarding Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #D80000;
+  --theme-light: #FCE3E3;
+  --theme-light-2: #F9D5D5;
+  --accent-blue: #002d62;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #000;
+}
+
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 5px 40px;
+}
+
+.header-full img.logo {
+  width: 80px;
+}
+
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  margin: 0;
+}
+
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 5px 0 10px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 40px 40px 40px;
+}
+
+.section-title {
+  color: var(--theme-colour);
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-left: 5px solid var(--theme-colour);
+  padding-left: 10px;
+}
+
+.info-card, .contact-card, .faq-item, .next-steps-box {
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.timeline {
+  border-left: 4px solid var(--theme-colour);
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.timeline-number {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  background: var(--theme-colour);
+  color: white;
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.timeline-table th, .timeline-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  background: #fff;
+}
+
+.checklist-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 25px;
+}
+
+.checklist li {
+  margin: 8px 0;
+}
+
+.info-box {
+  background: #fff;
+  border-left: 4px solid var(--theme-colour);
+  padding: 18px;
+  border-radius: 4px;
+  margin-bottom: 25px;
+}
+
+.footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+
+/* New Light Red Gradient Block */
+.gradient-welcome {
+  background: linear-gradient(135deg, var(--theme-light) 0%, var(--theme-light-2) 100%);
+  color: #000;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 1px solid #e8bcbc;
+}
+
+.gradient-welcome h1 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: var(--accent-blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-full">
+  <img src="M_Logo_Red.png" class="logo" alt="M Customs Manager Logo">
+  <h1>Client Onboarding Pack</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<!-- Welcome Block -->
+<div class="gradient-welcome">
+  <h1>Welcome to {{agent.company}}</h1>
+  <p style="margin: 0; font-size: 16px;">
+    Your Partner in Customs Duty Recovery and Compliance
+  </p>
+</div>
+
+<p style="font-size: 15px;">Dear {{trader.contact_name}},</p>
+
+<p style="font-size: 15px;">
+Welcome! We're delighted that you've chosen <strong>{{agent.company}}</strong> to assist with your
+customs duty repayment and compliance needs. This onboarding pack contains everything you need to
+get started and understand how we'll work together to recover overpaid duties and ensure your
+customs compliance.
+</p>
+
+<h2 class="section-title">What We Do</h2>
+
+<div class="info-card">
+  <h3 style="color: var(--accent-blue);">💰 Duty Recovery Services</h3>
+  <p>We specialize in identifying and recovering overpaid customs duties, VAT, and excise…</p>
+</div>
+
+<div class="info-card">
+  <h3 style="color: var(--accent-blue);">📋 Customs Compliance</h3>
+  <p>We provide expert guidance on tariff classification, customs valuation…</p>
+</div>
+
+<div class="info-card">
+  <h3 style="color: var(--accent-blue);">🤝 HMRC Representation</h3>
+  <p>As your authorized customs agent, we handle all communications…</p>
+</div>
+
+<h2 class="section-title">How the Process Works</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-number">1</div>
+    <div class="timeline-content">
+      <h4>Initial Review & Assessment</h4>
+      <p>We review your import declarations…</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-number">2</div>
+    <h4>Information Gathering</h4>
+    <p>We'll request specific documents…</p>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-number">3</div>
+    <h4>Claim Preparation</h4>
+    <p>Our team prepares comprehensive C285 applications…</p>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-number">4</div>
+    <h4>HMRC Submission</h4>
+    <p>We submit your claims to HMRC…</p>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-number">5</div>
+    <h4>Payment & Settlement</h4>
+    <p>HMRC issues the refund directly to your bank…</p>
+  </div>
+</div>
+
+<h2 class="section-title">Expected Timeline</h2>
+
+<table class="timeline-table">
+  <tr>
+    <th>Stage</th><th>Typical Duration</th><th>Your Action</th>
+  </tr>
+  <tr>
+    <td>Initial Assessment</td><td>5–7 days</td><td>Provide import data</td>
+  </tr>
+  <tr>
+    <td>Document Collection</td><td>1–2 weeks</td><td>Send documents</td>
+  </tr>
+  <tr>
+    <td>Claim Preparation</td><td>1–2 weeks</td><td>Approve drafts</td>
+  </tr>
+  <tr>
+    <td>HMRC Processing</td><td>30–90 days</td><td>None</td>
+  </tr>
+  <tr>
+    <td>Payment Receipt</td><td>5–10 days</td><td>Confirm receipt</td>
+  </tr>
+</table>
+
+<h2 class="section-title">What We Need From You</h2>
+
+<div class="checklist-section">
+  <h4 style="color: var(--accent-blue);">📄 Essential Documents</h4>
+  <ul class="checklist">
+    <li>☐ Completed Trader Information Form</li>
+    <li>☐ EORI certificate</li>
+    <li>☐ VAT certificate</li>
+    <li>☐ Incorporation documents</li>
+    <li>☐ Bank verification form</li>
+    <li>☐ Signed engagement letter</li>
+    <li>☐ Signed agent authority letter</li>
+  </ul>
+</div>
+
+<div class="checklist-section">
+  <h4 style="color: var(--accent-blue);">📦 Import Documentation</h4>
+  <ul class="checklist">
+    <li>☐ Import declarations</li>
+    <li>☐ Invoices</li>
+    <li>☐ Packing lists</li>
+    <li>☐ Deferment statements</li>
+    <li>☐ Certificates of origin</li>
+    <li>☐ Product specs</li>
+  </ul>
+</div>
+
+<div style="background:#fff3cd; border-left:4px solid #ffc107; padding:16px;">
+  💡 <strong>Tip:</strong> Don't worry if you don’t have everything — we can retrieve many documents from HMRC.
+</div>
+
+<h2 class="section-title">Your Key Contacts</h2>
+
+<div class="contact-card">
+  <h4 style="color: var(--accent-blue);">Primary Contact</h4>
+  <p><strong>{{agent.contact}}</strong><br>Email: {{agent.email}}<br>Phone: {{agent.phone}}</p>
+</div>
+
+<div class="contact-card">
+  <h4 style="color: var(--accent-blue);">General Enquiries</h4>
+  <p>Email: info@{{agent.company}}<br>Phone: {{agent.phone}}</p>
+</div>
+
+<h2 class="section-title">Fees and Payment</h2>
+
+<div class="info-box">
+  <h4 style="color: var(--accent-blue); margin-top:0;">Success-Based Pricing</h4>
+  <p>Our C285 service operates on a <strong>no win, no fee</strong> basis…</p>
+</div>
+
+<h2 class="section-title">Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h4 style="color: var(--accent-blue);">How long does it take?</h4>
+  <p>Typically 2–4 months…</p>
+</div>
+
+<div class="faq-item">
+  <h4 style="color: var(--accent-blue);">What if HMRC rejects?</h4>
+  <p>You pay nothing…</p>
+</div>
+
+<h2 class="section-title">Next Steps</h2>
+
+<div class="next-steps-box">
+  <h4 style="color: var(--accent-blue);">Getting Started Checklist</h4>
+  <ol>
+    <li>Review and sign engagement letter</li>
+    <li>Complete trader form</li>
+    <li>Sign authority letter</li>
+    <li>Provide import docs</li>
+    <li>Send back to us</li>
+    <li>Schedule onboarding call</li>
+  </ol>
+</div>
+
+<div style="background:#e3f2fd; border-left:4px solid #1976d2; padding:20px;">
+  <h4 style="margin:0; color:#1565c0;">📞 Ready to Start?</h4>
+  Contact <strong>{{agent.contact}}</strong> at {{agent.email}} or {{agent.phone}} to begin.
+</div>
+
+<div style="text-align:center; margin-top:40px; padding:30px; background:#f9fafc; border-radius:8px;">
+  <h3 style="color: var(--accent-blue);">Thank You for Choosing {{agent.company}}</h3>
+  <p>We look forward to working with you.</p>
+</div>
+
+</div>
+
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>© {year} M Assist AI.</em>
+</div>
+
+</body>
+</html>

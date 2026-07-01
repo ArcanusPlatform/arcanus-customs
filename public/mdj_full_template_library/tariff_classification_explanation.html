@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tariff Classification Explanation</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #E6BD2F;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Gold.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Tariff Classification Explanation</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Product Description:</strong> _______________<br>
+    <strong>Incorrect Code:</strong> ___________ → <strong>Correct Code:</strong> ___________<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">1. Product Description</h2>
+
+<div class="info-box">
+    <p style="margin-top: 0;"><strong>Commercial Description:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Technical Specifications:</strong></p>
+    <ul style="margin-bottom: 0;">
+        <li><strong>Material/Composition:</strong> _______________</li>
+        <li><strong>Function/Use:</strong> _______________</li>
+        <li><strong>Dimensions/Size:</strong> _______________</li>
+        <li><strong>Weight:</strong> _______________</li>
+        <li><strong>Manufacturing Process:</strong> _______________</li>
+        <li><strong>Key Features:</strong> _______________</li>
+    </ul>
+</div>
+
+<h2 class="section-title">2. Classification Analysis</h2>
+
+<h3 class="subsection-title">2.1 Incorrect Classification (As Declared)</h3>
+
+<table class="classification-table">
+    <tr>
+        <td style="width: 30%;"><strong>Commodity Code:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Description:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Duty Rate:</strong></td>
+        <td>______%</td>
+    </tr>
+    <tr>
+        <td><strong>Duty Paid:</strong></td>
+        <td>£{{claim.original_duty}}</td>
+    </tr>
+</table>
+
+<div class="explanation-box">
+    <p style="margin-top: 0;"><strong>Why This Classification Was Incorrect:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<h3 class="subsection-title">2.2 Correct Classification</h3>
+
+<table class="classification-table">
+    <tr>
+        <td style="width: 30%;"><strong>Commodity Code:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Description:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Duty Rate:</strong></td>
+        <td>______%</td>
+    </tr>
+    <tr>
+        <td><strong>Correct Duty:</strong></td>
+        <td>£{{claim.correct_duty}}</td>
+    </tr>
+    <tr style="background: #e8f5e9;">
+        <td><strong>Overpayment:</strong></td>
+        <td><strong>£{{claim.duty_overpayment}}</strong></td>
+    </tr>
+</table>
+
+<div class="explanation-box">
+    <p style="margin-top: 0;"><strong>Why This Classification Is Correct:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">3. Combined Nomenclature Analysis</h2>
+
+<h3 class="subsection-title">3.1 Relevant CN Headings</h3>
+
+<div class="cn-box">
+    <p><strong>Chapter:</strong> _____ - _____________________________</p>
+    <p><strong>Heading:</strong> _____ - _____________________________</p>
+    <p><strong>Subheading:</strong> _____ - _____________________________</p>
+</div>
+
+<h3 class="subsection-title">3.2 Classification Rules Applied</h3>
+
+<div class="info-box">
+    <p style="margin-top: 0;"><strong>General Interpretative Rules (GIR):</strong></p>
+    <ul style="margin-bottom: 0;">
+        <li>☐ <strong>GIR 1:</strong> Classification by heading text</li>
+        <li>☐ <strong>GIR 2(a):</strong> Incomplete or unfinished articles</li>
+        <li>☐ <strong>GIR 2(b):</strong> Mixtures and combinations</li>
+        <li>☐ <strong>GIR 3(a):</strong> Most specific description</li>
+        <li>☐ <strong>GIR 3(b):</strong> Essential character</li>
+        <li>☐ <strong>GIR 3(c):</strong> Heading last in numerical order</li>
+        <li>☐ <strong>GIR 4:</strong> Goods most akin</li>
+        <li>☐ <strong>GIR 5:</strong> Containers and packing</li>
+        <li>☐ <strong>GIR 6:</strong> Subheading comparison</li>
+    </ul>
+</div>
+
+<h3 class="subsection-title">3.3 Section and Chapter Notes</h3>
+
+<div class="notes-box">
+    <p style="margin-top: 0;"><strong>Relevant Notes:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">4. Supporting Evidence</h2>
+
+<table class="evidence-table">
+    <thead>
+        <tr>
+            <th style="width: 5%;">☑</th>
+            <th style="width: 45%;">Evidence Type</th>
+            <th style="width: 50%;">Reference/Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Product Technical Data Sheet</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Product Brochure/Catalogue</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Material Composition Analysis</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Laboratory Test Results</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Product Samples/Photos</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Previous BTI Rulings</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>HMRC Guidance References</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Trade Association Standards</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">5. Precedents and References</h2>
+
+<div class="reference-box">
+    <h4 style="margin-top: 0; color: #002d62;">BTI Rulings</h4>
+    <p><strong>Reference:</strong> _______________</p>
+    <p><strong>Date:</strong> _______________</p>
+    <p><strong>Relevance:</strong> _______________________________________________________________________________</p>
+</div>
+
+<div class="reference-box">
+    <h4 style="margin-top: 0; color: #002d62;">HMRC Guidance</h4>
+    <p><strong>Document:</strong> _______________</p>
+    <p><strong>Section:</strong> _______________</p>
+    <p><strong>Relevance:</strong> _______________________________________________________________________________</p>
+</div>
+
+<div class="reference-box">
+    <h4 style="margin-top: 0; color: #002d62;">Case Law / Tribunal Decisions</h4>
+    <p><strong>Case:</strong> _______________</p>
+    <p><strong>Date:</strong> _______________</p>
+    <p><strong>Relevance:</strong> _______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">6. Conclusion and Recommendation</h2>
+
+<div class="conclusion-box">
+    <p style="margin-top: 0;"><strong>Summary:</strong></p>
+    <p>
+    Based on the product description, technical specifications, and application of the Combined Nomenclature 
+    classification rules, the correct commodity code for this product is <strong>_______________</strong>.
+    </p>
+    
+    <p style="margin-top: 15px;"><strong>Justification:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Financial Impact:</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 60%;">Duty Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.duty_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">VAT Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.vat_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none; border-top: 2px solid #002d62;">
+            <td style="border: none; padding-top: 5px;"><strong>Total Refund Due:</strong></td>
+            <td style="border: none; text-align: right; padding-top: 5px;"><strong>£{{claim.total_claim_amount}}</strong></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 30px;">
+    <p><strong>Prepared By:</strong> {{agent.contact}}</p>
+    <p><strong>Date:</strong> {{today}}</p>
+    <p><strong>Organisation:</strong> {{agent.company}}</p>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

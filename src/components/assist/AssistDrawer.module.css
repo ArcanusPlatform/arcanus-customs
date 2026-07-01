@@ -1,0 +1,110 @@
+/* AssistDrawer.module.css - Assist drawer panel component styles */
+
+/* Overlay backdrop - behind the drawer */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9998;
+  pointer-events: auto;
+  transition: background 0.25s ease;
+}
+
+.overlay[data-closed='true'] {
+  pointer-events: none;
+}
+
+/* Main drawer panel */
+.panel {
+  position: fixed;
+  right: 2rem;
+  bottom: 6rem;
+  width: 420px;
+  max-width: calc(100vw - 2rem);
+  height: 560px;
+  max-height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  background: rgba(31, 31, 31, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35), 0 0 24px rgba(200, 166, 82, 0.25);
+  overflow: hidden;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: auto;
+}
+
+.panel[data-closed='true'] {
+  transform: translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.panel[data-closed='false'] {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Header container - logo and close button */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  color: #f9f9f9;
+}
+
+/* Logo and title group */
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Drawer logo image */
+.drawerLogo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 2px;
+  filter: none;
+}
+
+/* Brand text in header */
+.brandText {
+  color: var(--primary-purple);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Close button */
+.closeButton {
+  background: transparent;
+  color: #f9f9f9;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.closeButton:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Content area - flex child */
+.content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

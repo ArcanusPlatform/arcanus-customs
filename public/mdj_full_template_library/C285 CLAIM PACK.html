@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C285 Claim Pack</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #0026FF;
+  --border-light: #d4ddff;
+  --box-bg: #f6f9ff;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+/* HEADER */
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 10px 40px;
+}
+.header-full img.logo {
+  width: 80px;
+}
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  margin: 0;
+}
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 0 40px 25px 40px;
+}
+
+/* GENERAL CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 40px 40px 40px;
+}
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  color: var(--theme-colour);
+  border-left: 5px solid var(--theme-colour);
+  padding-left: 12px;
+}
+
+/* SUMMARY BOXES */
+.summary-box {
+  background: var(--box-bg);
+  border-left: 5px solid var(--theme-colour);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.totals-box {
+  background: var(--box-bg);
+  border: 1px solid var(--border-light);
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 30px 0;
+  font-size: 14px;
+}
+table th {
+  background: #eef2ff;
+  padding: 10px;
+  border: 1px solid var(--border-light);
+  font-weight: 600;
+  text-align: left;
+  color: #0026FF;
+}
+table td {
+  padding: 10px;
+  border: 1px solid var(--border-light);
+}
+
+/* Evidence List */
+.evidence-list {
+  list-style: none;
+  padding-left: 0;
+}
+.evidence-list li {
+  background: var(--box-bg);
+  border-left: 5px solid var(--theme-colour);
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+    <img src="M_Logo_Blue.png" class="logo" alt="M Customs Manager Logo">
+    <h1>C285 Claim Pack</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<!-- EXEC SUMMARY -->
+<h2 class="section-title">Executive Summary</h2>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>EORI:</strong> {{trader.eori}}<br>
+    <strong>Import Declaration Date:</strong> {{claim.acceptance_date}}<br>
+    <strong>Import Type:</strong> {{claim.import_type}}<br>
+    <strong>Claim Type:</strong> {{claim.claim_type}}<br>
+    <strong>Total Refund Amount:</strong> £{{claim.total_claim_amount}}
+</div>
+
+<!-- TRADER DETAILS -->
+<h2 class="section-title">Trader / Claimant Details</h2>
+
+<table>
+    <tr><th colspan="2">Identity</th></tr>
+    <tr><td>Trader Name</td><td>{{trader.name}}</td></tr>
+    <tr><td>EORI</td><td>{{trader.eori}}</td></tr>
+    <tr><td>Legal Entity Type</td><td>{{trader.legal_entity_type}}</td></tr>
+    <tr>
+        <td>Registered Address</td>
+        <td>
+            {{trader.registered_address_line_1}}<br>
+            {{trader.registered_address_line_2}}<br>
+            {{trader.registered_city}}, {{trader.registered_postcode}}<br>
+            {{trader.registered_country}}
+        </td>
+    </tr>
+</table>
+
+<!-- DECLARANT -->
+<h2 class="section-title">Declarant Details</h2>
+
+<table>
+    <tr><td>Declarant Name</td><td>{{declarant.name}}</td></tr>
+    <tr><td>Declarant Capacity</td><td>{{declarant.capacity}}</td></tr>
+</table>
+
+<!-- DECLARATION DETAILS -->
+<h2 class="section-title">Declaration & Import Details</h2>
+
+<table>
+    <tr><td>MRN</td><td>{{claim.mrn}}</td></tr>
+    <tr><td>Entry Number</td><td>{{claim.entry_number}}</td></tr>
+    <tr><td>Office of Import</td><td>{{claim.office_of_import}}</td></tr>
+    <tr><td>Customs Regime Code</td><td>{{claim.customs_regime_code}}</td></tr>
+    <tr><td>Country of Export</td><td>{{claim.country_of_export}}</td></tr>
+    <tr><td>Preferential Scheme</td><td>{{claim.preferential_scheme}}</td></tr>
+    <tr><td>Preference Claimed at Import</td><td>{{claim.preference_claimed_import}}</td></tr>
+    <tr><td>VAT Accounting Method</td><td>{{claim.vat_method}}</td></tr>
+    <tr><td>Goods Released to Free Circulation</td><td>{{claim.goods_released_free_circulation}}</td></tr>
+</table>
+
+<!-- FINANCIAL SUMMARY -->
+<h2 class="section-title">Financial Breakdown</h2>
+
+<div class="totals-box">
+    <div class="totals-row"><span>Original Duty</span><strong>£{{claim.original_duty}}</strong></div>
+    <div class="totals-row"><span>Correct Duty</span><strong>£{{claim.correct_duty}}</strong></div>
+    <div class="totals-row"><span>Duty Overpayment</span><strong>£{{claim.duty_overpayment}}</strong></div>
+    <hr>
+    <div class="totals-row"><span>Original VAT</span><strong>£{{claim.original_vat}}</strong></div>
+    <div class="totals-row"><span>Correct VAT</span><strong>£{{claim.correct_vat}}</strong></div>
+    <div class="totals-row"><span>VAT Overpayment</span><strong>£{{claim.vat_overpayment}}</strong></div>
+    <hr>
+    <div class="totals-row"><span>Original Excise</span><strong>£{{claim.original_excise}}</strong></div>
+    <div class="totals-row"><span>Correct Excise</span><strong>£{{claim.correct_excise}}</strong></div>
+    <div class="totals-row"><span>Excise Overpayment</span><strong>£{{claim.excise_overpayment}}</strong></div>
+    <hr>
+    <div class="totals-row" style="font-size: 16px; padding-top: 6px;">
+        <span><strong>Total Refund Due</strong></span>
+        <strong>£{{claim.total_claim_amount}}</strong>
+    </div>
+</div>
+
+<!-- ITEM TABLE -->
+<h2 class="section-title">Itemised Declaration Breakdown</h2>
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Commodity Code</th>
+        <th>Inv Value</th>
+        <th>Orig Duty</th>
+        <th>Correct Duty</th>
+        <th>Delta</th>
+    </tr>
+
+    {{#each claim.items}}
+    <tr>
+        <td>{{item_number}}</td>
+        <td>{{description}}</td>
+        <td>{{commodity_code}}</td>
+        <td>£{{invoice_value}}</td>
+        <td>£{{original_duty}}</td>
+        <td>£{{correct_duty}}</td>
+        <td><strong>£{{duty_overpayment}}</strong></td>
+    </tr>
+    {{/each}}
+</table>
+
+<!-- EVIDENCE LIST -->
+<h2 class="section-title">Evidence Checklist</h2>
+
+<ul class="evidence-list">
+    <li>📄 Import Entry (C88 / CDS Declaration)</li>
+    <li>📄 MRN Document (full XML or PDF)</li>
+    <li>📄 Commercial Invoice(s)</li>
+    <li>📦 Packing List</li>
+    <li>📜 Evidence of Origin (if applicable)</li>
+    <li>📜 Tariff Classification Justification</li>
+    <li>💳 Proof of Duty/VAT Paid (Bank or Deferment)</li>
+    <li>📬 Proof of Export (Returned Goods only)</li>
+    <li>🧾 Any additional supporting documents</li>
+</ul>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

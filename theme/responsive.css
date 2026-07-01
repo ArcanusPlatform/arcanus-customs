@@ -1,0 +1,410 @@
+/* =============================================================
+   @arcanus/theme — responsive.css
+   MOBILE-FIRST RESPONSIVE PATTERNS
+   -------------------------------------------------------------
+   Breakpoints, responsive layout utilities, and component
+   adaptations for mobile, tablet, and desktop screens.
+   Include this in index.css after components.css.
+   ============================================================= */
+
+/* ---- Responsive Breakpoints -------------------------------- */
+:root {
+  /* Breakpoints for media queries (mobile-first) */
+  --bp-xs:  640px;   /* small phone (landscape) */
+  --bp-sm:  768px;   /* tablet portrait */
+  --bp-md:  1024px;  /* tablet landscape / small desktop */
+  --bp-lg:  1280px;  /* desktop */
+  --bp-xl:  1536px;  /* large desktop */
+
+  /* Mobile/Tablet Layout Constants */
+  --topbar-h-mobile:   56px;
+  --sidebar-w-tablet:  200px;
+  --sidebar-w-mobile:  100%;  /* full width when open */
+}
+
+/* ========== MOBILE DEFAULTS (< 768px) ========== */
+
+/* --- App Shell: Stacked layout on mobile --- */
+@media (max-width: 767px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--topbar-h-mobile) 1fr;
+    grid-template-areas: "topbar" "main";
+  }
+
+  /* Brand block hidden on mobile, integrated into topbar instead */
+  .brand {
+    display: none;
+  }
+
+  /* Topbar: smaller on mobile, includes hamburger toggle */
+  .topbar {
+    padding: 0 var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .topbar__search {
+    display: none;  /* hide search on mobile; show via responsive menu */
+  }
+
+  /* Sidebar: slide-out drawer on mobile */
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-h-mobile);
+    left: 0;
+    width: 100%;
+    max-width: 280px;
+    height: calc(100vh - var(--topbar-h-mobile));
+    background: var(--color-chrome);
+    border-right: 1px solid var(--color-border-soft);
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform var(--dur-base) var(--ease-out);
+    overflow-y: auto;
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  /* Mobile Scrim (overlay behind sidebar) */
+  .sidebar-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+
+  .sidebar-scrim.is-open {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Main content: full width on mobile */
+  .main {
+    padding: var(--space-4);
+  }
+
+  /* --- Hamburger Menu Button --- */
+  .hamburger {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: var(--space-2);
+    color: var(--slate-100);
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transition: all var(--dur-base) var(--ease-out);
+    border-radius: 1px;
+  }
+
+  /* Hamburger animation: X state */
+  .hamburger.is-open span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+  }
+
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.is-open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+
+  /* --- Responsive Typography --- */
+  body {
+    font-size: var(--text-sm);
+  }
+
+  .page-head__title {
+    font-size: var(--text-2xl);
+  }
+
+  .auth__tagline {
+    font-size: var(--text-2xl);
+  }
+
+  /* --- Responsive Spacing --- */
+  .main {
+    padding: var(--space-4);
+  }
+
+  .card {
+    margin-bottom: var(--space-4);
+  }
+
+  .btn {
+    height: 40px;
+    font-size: var(--text-sm);
+    padding: 0 var(--space-4);
+  }
+
+  /* Button: full width on mobile when in forms */
+  .field .btn--block {
+    width: 100%;
+  }
+
+  /* --- Responsive Inputs --- */
+  .input {
+    font-size: 16px;  /* Prevent iOS zoom on focus */
+  }
+
+  .topbar__search {
+    max-width: none;
+  }
+
+  .input-group .input {
+    padding-left: 40px;
+  }
+
+  /* --- Responsive Auth Layout --- */
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth__aside {
+    display: none;
+  }
+
+  .auth__panel {
+    padding: var(--space-6);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .auth__card {
+    max-width: 100%;
+  }
+}
+
+/* ========== TABLET (768px - 1023px) ========== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-shell {
+    grid-template-columns: var(--sidebar-w-tablet) 1fr;
+  }
+
+  .sidebar {
+    width: var(--sidebar-w-tablet);
+  }
+
+  .main {
+    padding: var(--space-6);
+  }
+
+  .page-head__title {
+    font-size: var(--text-2xl);
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar-scrim {
+    display: none;
+  }
+
+  .topbar__search {
+    max-width: 300px;
+  }
+}
+
+/* ========== DESKTOP (1024px+) ========== */
+
+@media (min-width: 1024px) {
+  .app-shell {
+    grid-template-columns: var(--sidebar-w) 1fr;
+  }
+
+  .sidebar {
+    width: var(--sidebar-w);
+    position: static;
+    transform: none;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar-scrim {
+    display: none;
+  }
+
+  .main {
+    padding: var(--space-8);
+  }
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+/* Show/hide based on breakpoint */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+.show-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none;
+  }
+}
+
+.hide-tablet {
+  display: block;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none;
+  }
+}
+
+.show-tablet {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .show-tablet {
+    display: block;
+  }
+}
+
+/* --- Responsive Flexbox/Grid --- */
+.grid-auto {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (max-width: 767px) {
+  .grid-auto {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-auto {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* --- Responsive Spacing --- */
+.p-mobile { padding: var(--space-4); }
+.p-tablet { padding: var(--space-6); }
+.p-desktop { padding: var(--space-8); }
+
+@media (min-width: 768px) { .p-mobile { padding: var(--space-6); } }
+@media (min-width: 1024px) { .p-mobile { padding: var(--space-8); } }
+
+/* --- Responsive Text --- */
+.text-responsive {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+@media (min-width: 768px) {
+  .text-responsive {
+    font-size: var(--text-base);
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive {
+    font-size: var(--text-lg);
+  }
+}
+
+/* --- Container Query Support (optional) --- */
+@supports (container-type: inline-size) {
+  .container-responsive {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 400px) {
+    .container-responsive {
+      padding: var(--space-4);
+    }
+  }
+
+  @container (min-width: 400px) and (max-width: 700px) {
+    .container-responsive {
+      padding: var(--space-6);
+    }
+  }
+
+  @container (min-width: 700px) {
+    .container-responsive {
+      padding: var(--space-8);
+    }
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hamburger span,
+  .sidebar,
+  .sidebar-scrim {
+    transition: none;
+  }
+}
+
+/* ========== PRINT ========== */
+
+@media print {
+  .topbar,
+  .brand,
+  .sidebar,
+  .hamburger,
+  .sidebar-scrim {
+    display: none;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "main";
+  }
+
+  .main {
+    padding: 0;
+  }
+}

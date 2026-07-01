@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valuation Adjustment Worksheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #D88414;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Orange.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Valuation Adjustment Worksheet</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Invoice Number:</strong> _______________<br>
+    <strong>Supplier:</strong> _______________<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">1. Original Valuation</h2>
+
+<table class="worksheet-table">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Component</th>
+            <th style="width: 25%;">Amount</th>
+            <th style="width: 25%;">Currency</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>A. Invoice Price (FOB/CIF/etc.)</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Goods Value</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Freight (if included)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Insurance (if included)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td>SUBTOTAL A</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="worksheet-table">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Additions to Invoice Price</th>
+            <th style="width: 25%;">Amount</th>
+            <th style="width: 25%;">Reference</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>B. Transport to UK Border</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Freight charges</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Loading/handling charges</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td>SUBTOTAL B</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>C. Insurance</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td>SUBTOTAL C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>D. Other Additions</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Commissions (except buying)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Brokerage</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Containers/packing</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Materials supplied by buyer</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Tools/dies/moulds</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Engineering/development</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Royalties/license fees</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Proceeds to seller</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td>SUBTOTAL D</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="worksheet-table">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Deductions from Invoice Price</th>
+            <th style="width: 25%;">Amount</th>
+            <th style="width: 25%;">Reference</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>E. Deductible Items</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Transport after UK border</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Construction/installation</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">UK duties and taxes</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Interest charges</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px;">Buying commissions</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td>SUBTOTAL E</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">2. Calculation Summary</h2>
+
+<table class="summary-table">
+    <tr>
+        <td style="width: 60%;">A. Invoice Price</td>
+        <td style="text-align: right;">_______________</td>
+    </tr>
+    <tr>
+        <td>B. Transport to UK Border</td>
+        <td style="text-align: right;">+ _______________</td>
+    </tr>
+    <tr>
+        <td>C. Insurance</td>
+        <td style="text-align: right;">+ _______________</td>
+    </tr>
+    <tr>
+        <td>D. Other Additions</td>
+        <td style="text-align: right;">+ _______________</td>
+    </tr>
+    <tr>
+        <td>E. Deductions</td>
+        <td style="text-align: right;">- _______________</td>
+    </tr>
+    <tr style="background: #002d62; color: white; font-weight: 700; font-size: 16px;">
+        <td>CUSTOMS VALUE (GBP)</td>
+        <td style="text-align: right;">£_______________</td>
+    </tr>
+</table>
+
+<h2 class="section-title">3. Currency Conversion</h2>
+
+<table class="conversion-table">
+    <tr>
+        <td style="width: 40%;"><strong>Original Currency:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Amount in Original Currency:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Exchange Rate:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Exchange Rate Date:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Source of Rate:</strong></td>
+        <td>☐ HMRC Published Rate ☐ Bank Rate ☐ Other: _______________</td>
+    </tr>
+    <tr style="background: #e8f5e9; font-weight: 700;">
+        <td>Amount in GBP:</td>
+        <td>£_______________</td>
+    </tr>
+</table>
+
+<h2 class="section-title">4. Comparison with Original Declaration</h2>
+
+<table class="comparison-table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Original Declaration</th>
+            <th>Correct Valuation</th>
+            <th>Difference</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Customs Value</strong></td>
+            <td>£_______________</td>
+            <td>£_______________</td>
+            <td>£_______________</td>
+        </tr>
+        <tr>
+            <td><strong>Duty Rate</strong></td>
+            <td>______%</td>
+            <td>______%</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>Duty Amount</strong></td>
+            <td>£{{claim.original_duty}}</td>
+            <td>£{{claim.correct_duty}}</td>
+            <td><strong>£{{claim.duty_overpayment}}</strong></td>
+        </tr>
+        <tr>
+            <td><strong>VAT Base</strong></td>
+            <td>£_______________</td>
+            <td>£_______________</td>
+            <td>£_______________</td>
+        </tr>
+        <tr>
+            <td><strong>VAT Amount (20%)</strong></td>
+            <td>£{{claim.original_vat}}</td>
+            <td>£{{claim.correct_vat}}</td>
+            <td><strong>£{{claim.vat_overpayment}}</strong></td>
+        </tr>
+        <tr style="background: #fff3cd; font-weight: 700;">
+            <td><strong>TOTAL OVERPAYMENT</strong></td>
+            <td colspan="2"></td>
+            <td><strong>£{{claim.total_claim_amount}}</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">5. Supporting Documentation</h2>
+
+<table class="docs-table">
+    <thead>
+        <tr>
+            <th style="width: 5%;">☑</th>
+            <th style="width: 45%;">Document</th>
+            <th style="width: 25%;">Reference</th>
+            <th style="width: 25%;">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Commercial Invoice</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Freight Invoice/Bill of Lading</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Insurance Certificate</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Packing List</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Purchase Order</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Sales Contract</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Payment Records</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Currency Conversion Evidence</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Related Party Declaration (if applicable)</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">6. Methodology Notes</h2>
+
+<div class="notes-box">
+    <p style="margin-top: 0;"><strong>Valuation Method Used:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Adjustments Explained:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Assumptions Made:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<div style="margin-top: 30px;">
+    <table style="border: none;">
+        <tr style="border: none;">
+            <td style="border: none; width: 50%; padding-right: 20px;">
+                <p><strong>Prepared By:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 40px; margin-top: 10px;"></p>
+                <p style="margin-top: 10px;">{{agent.contact}}</p>
+            </td>
+            <td style="border: none; width: 50%;">
+                <p><strong>Date:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 40px; margin-top: 10px;"></p>
+                <p style="margin-top: 10px;">{{today}}</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Agent-Client Engagement Letter</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #D80000;
+}
+
+/* GLOBAL */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #fafafa;
+}
+
+/* HEADER */
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 5px 40px;
+}
+
+.header-full img.logo {
+  width: 80px;
+}
+
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  margin: 0;
+}
+
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 5px 0 10px 0;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* SECTION TITLES */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: var(--theme-colour);
+  border-left: 4px solid var(--theme-colour);
+  padding-left: 10px;
+}
+
+.subsection-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 30px;
+  color: var(--theme-colour);
+}
+
+/* BOXES */
+.info-box,
+.service-box {
+  background: #fff7f7;
+  border-left: 4px solid var(--theme-colour);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.info-box ul,
+.service-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+  <img src="M_Logo_Red.png" class="logo" alt="M Assist Logo">
+  <h1>Agent-Client Engagement Letter</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<!-- ADDRESS BLOCKS -->
+<p style="text-align: right; margin-bottom: 30px;">
+  <strong>{{agent.company}}</strong><br>
+  {{agent.address}}<br>
+  {{agent.city}}, {{agent.postcode}}<br>
+  {{agent.country}}<br>
+  Email: {{agent.email}}<br>
+  Phone: {{agent.phone}}
+</p>
+
+<p style="margin-bottom: 30px;">{{today}}</p>
+
+<p>
+  <strong>{{trader.name}}</strong><br>
+  {{trader.registered_address_line_1}}<br>
+  {{trader.registered_city}}, {{trader.registered_postcode}}<br>
+  {{trader.registered_country}}
+</p>
+
+<p style="margin-top: 30px;">Dear {{trader.contact_name}},</p>
+
+<!-- MAIN TITLE -->
+<h2 class="section-title">Letter of Engagement for Customs Consultancy Services</h2>
+
+<p>
+Thank you for choosing <strong>{{agent.company}}</strong> to assist with your customs duty repayment
+and compliance matters. This letter outlines the terms of our engagement and the services we will provide.
+</p>
+
+<!-- SECTION 1 -->
+<h3 class="subsection-title">1. Engagement Overview</h3>
+<p>We are appointed as your customs consultants and agents for:</p>
+
+<ul>
+  <li>Preparing and submitting C285 repayment claims to HMRC</li>
+  <li>Managing customs compliance and advisory services</li>
+  <li>Representing you in communications with HMRC</li>
+  <li>Providing expert guidance on customs duty, VAT, and trade matters</li>
+</ul>
+
+<!-- SECTION 2 -->
+<h3 class="subsection-title">2. Scope of Services</h3>
+
+<div class="service-box">
+  <h4 style="margin-top: 0; color: var(--theme-colour);">2.1 C285 Repayment Claims</h4>
+  <ul>
+    <li>Review of import declarations</li>
+    <li>Preparation of C285 repayment applications</li>
+    <li>Calculation of duty, VAT, and excise overpayments</li>
+    <li>Compilation of supporting evidence</li>
+    <li>Submission and monitoring of claims</li>
+    <li>Handling HMRC queries and correspondence</li>
+  </ul>
+</div>
+
+<div class="service-box">
+  <h4 style="margin-top: 0; color: var(--theme-colour);">2.2 Customs Compliance Advisory</h4>
+  <ul>
+    <li>Tariff classification guidance</li>
+    <li>Customs valuation advice</li>
+    <li>Origin and preference determination</li>
+    <li>Import/export procedural guidance</li>
+    <li>Compliance audits and risk assessments</li>
+  </ul>
+</div>
+
+<div class="service-box">
+  <h4 style="margin-top: 0; color: var(--theme-colour);">2.3 Representation and Communication</h4>
+  <ul>
+    <li>Acting as your authorised representative with HMRC</li>
+    <li>Managing all HMRC correspondence</li>
+    <li>Responding to information requests</li>
+    <li>Negotiating where appropriate</li>
+  </ul>
+</div>
+
+<!-- SECTION 3 -->
+<h3 class="subsection-title">3. Client Responsibilities</h3>
+
+<p>You agree to:</p>
+
+<ul>
+  <li>Provide accurate and complete information</li>
+  <li>Supply required documents promptly</li>
+  <li>Maintain required customs records</li>
+  <li>Notify us of changes to your business or circumstances</li>
+  <li>Review and approve documents prior to submission</li>
+  <li>Forward any HMRC correspondence to us immediately</li>
+</ul>
+
+<!-- SECTION 4 -->
+<h3 class="subsection-title">4. Fees and Payment Terms</h3>
+
+<div class="info-box">
+  <h4 style="margin-top:0; color: var(--theme-colour);">4.1 Fee Structure</h4>
+  <ul>
+    <li><strong>Success Fee:</strong> 25% of the recovered amount (ex VAT)</li>
+    <li><strong>No Win, No Fee:</strong> No charge if unsuccessful</li>
+    <li><strong>Minimum Fee:</strong> £500 per successful claim</li>
+  </ul>
+</div>
+
+<div class="info-box">
+  <h4 style="margin-top:0; color: var(--theme-colour);">4.2 Payment Terms</h4>
+  <ul>
+    <li>Success fees payable within 14 days of refund receipt</li>
+    <li>Hourly advisory services billed monthly</li>
+    <li>Payment due within 30 days</li>
+  </ul>
+</div>
+
+<div class="info-box">
+  <h4 style="margin-top:0; color: var(--theme-colour);">4.3 Expenses</h4>
+  <p>Out-of-pocket expenses may be recharged. Approval obtained for items over £100.</p>
+</div>
+
+<!-- SECTION 5 -->
+<h3 class="subsection-title">5. Confidentiality and Data Protection</h3>
+<ul>
+  <li>All information is treated as confidential</li>
+  <li>Data processed in compliance with UK GDPR</li>
+  <li>We maintain appropriate security controls</li>
+</ul>
+
+<!-- SECTION 6 -->
+<h3 class="subsection-title">6. Professional Standards and Liability</h3>
+
+<div class="info-box">
+  <h4 style="margin-top:0; color: var(--theme-colour);">6.1 Standards</h4>
+  <ul>
+    <li>HMRC regulations</li>
+    <li>UK customs law and UCC</li>
+    <li>Professional ethics and conduct</li>
+  </ul>
+</div>
+
+<div class="info-box">
+  <h4 style="margin-top:0; color: var(--theme-colour);">6.2 Liability</h4>
+  <ul>
+    <li>Liability capped at fees paid or £100,000</li>
+    <li>PI insurance of £1,000,000 maintained</li>
+  </ul>
+</div>
+
+<!-- SECTION 7 -->
+<h3 class="subsection-title">7. Duration and Termination</h3>
+<ul>
+  <li>Starts on date of signature</li>
+  <li>Continues until services complete</li>
+  <li>Either party may terminate with 30 days' notice</li>
+</ul>
+
+<!-- SECTION 8 -->
+<h3 class="subsection-title">8. Complaints and Disputes</h3>
+<p>Please contact {{agent.contact}} regarding concerns. Disputes may be escalated to an independent body.</p>
+
+<!-- SECTION 9 -->
+<h3 class="subsection-title">9. Acceptance of Terms</h3>
+<p>Please sign below to confirm your acceptance.</p>
+
+<!-- SIGNATURE BOX -->
+<div class="info-box" style="background:#fff;">
+  <p><strong>For {{agent.company}}:</strong></p>
+  <p style="border-bottom:2px solid #000; height:50px;"></p>
+  <p><strong>Name:</strong> {{agent.contact}}<br>
+     <strong>Position:</strong> Director<br>
+     <strong>Date:</strong> {{today}}</p>
+</div>
+
+<div style="margin-top:40px; border-top:2px solid var(--theme-colour); padding-top:30px;">
+  <h3 class="subsection-title" style="margin-top:0;">Client Acceptance</h3>
+
+  <p>I/We accept the terms of this engagement and authorise {{agent.company}} to act on our behalf.</p>
+
+  <p><strong>Signature:</strong></p>
+  <p style="border-bottom:2px solid #000; height:50px; width:50%;"></p>
+
+  <p><strong>Name:</strong> {{trader.contact_name}}</p>
+  <p><strong>Position:</strong> __________________________</p>
+  <p><strong>Company:</strong> {{trader.name}}</p>
+  <p><strong>EORI:</strong> {{trader.eori}}</p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  {settings.business_name}<br>
+  {settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+  Email: {settings.email} | Phone: {settings.phone}<br>
+  <em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+  © {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

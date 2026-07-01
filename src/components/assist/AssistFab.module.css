@@ -1,0 +1,164 @@
+/* AssistFab.module.css - Floating action button component styles */
+
+/* Keyframes for FAB ring animation */
+@keyframes fab-ring-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Container for FAB positioning */
+.container {
+  position: fixed;
+  z-index: 9999;
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.container[data-position='bottom-right'] {
+  right: 2rem;
+  left: auto;
+}
+
+.container[data-position='top-right'] {
+  top: 2rem;
+  bottom: auto;
+  right: 2rem;
+  left: auto;
+}
+
+.container[data-position='top-left'] {
+  top: 2rem;
+  bottom: auto;
+}
+
+.container[data-inline='true'] {
+  position: relative;
+  z-index: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  top: auto;
+}
+
+/* Main FAB button */
+.button {
+  position: relative;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  box-shadow: none;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Center grid for icon and ring */
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* White background circle */
+.background {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.16);
+  position: absolute;
+}
+
+/* Animated ring around FAB */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: none;
+  transition: border-color 0.2s ease;
+}
+
+/* Ring status variants */
+.ring[data-status='ok'] {
+  animation: fab-ring-spin 2.2s linear infinite;
+  border: 2px solid var(--primary-purple, #7c3aed);
+}
+
+.ring[data-status='warn'] {
+  animation: fab-ring-spin 3s linear infinite;
+  border: 2px solid #eab308;
+}
+
+.ring[data-status='error'] {
+  animation: fab-ring-spin 1.2s linear infinite;
+  border: 2px solid #ef4444;
+}
+
+/* Status dot on ring */
+.statusDot {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+.statusDot[data-status='ok'] {
+  background: var(--primary-purple, #7c3aed);
+}
+
+.statusDot[data-status='warn'] {
+  background: #eab308;
+}
+
+.statusDot[data-status='error'] {
+  background: #ef4444;
+}
+
+/* Lion logo image */
+.logo {
+  position: absolute;
+  object-fit: contain;
+  filter: none;
+  pointer-events: none;
+}
+
+/* Badge for notifications */
+.badge {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,130 @@
+/* Arcanus Customs Branding Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+.arcanus-full-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 32px;
+  border-radius: 28px;
+  border: 2px solid #7c3aed;
+  background: rgba(15, 23, 42, 0.7);
+  box-shadow:
+    0 0 16px rgba(124, 58, 237, 0.5),
+    0 0 32px rgba(124, 58, 237, 0.35),
+    0 0 64px rgba(124, 58, 237, 0.2);
+  transition: 0.25s ease-in-out;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.arcanus-full-container:hover {
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.7),
+    0 0 45px rgba(124, 58, 237, 0.5),
+    0 0 80px rgba(124, 58, 237, 0.3);
+  transform: scale(1.02);
+  border-color: #8b5cf6;
+}
+
+.arcanus-logo {
+  height: 70px;
+  width: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.5));
+}
+
+.arcanus-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.arcanus-text-customs {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Tablet and smaller desktops */
+@media (max-width: 768px) {
+  .arcanus-full-container {
+    padding: 20px 28px;
+    gap: 14px;
+  }
+
+  .arcanus-logo {
+    height: 60px;
+  }
+
+  .arcanus-text-customs {
+    font-size: 28px;
+  }
+}
+
+/* Mobile landscape and narrow browsers */
+@media (max-width: 640px) {
+  .arcanus-full-container {
+    padding: 18px 24px;
+    gap: 12px;
+  }
+
+  .arcanus-logo {
+    height: 52px;
+  }
+
+  .arcanus-text-customs {
+    font-size: 24px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .arcanus-full-container {
+    padding: 16px 20px;
+    gap: 10px;
+    border-radius: 20px;
+  }
+
+  .arcanus-logo {
+    height: 46px;
+  }
+
+  .arcanus-text-customs {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Very small devices (iPhone SE, etc.) */
+@media (max-width: 380px) {
+  .arcanus-full-container {
+    padding: 14px 16px;
+    gap: 8px;
+    border-radius: 18px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .arcanus-logo {
+    height: 40px;
+  }
+
+  .arcanus-text-customs {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .arcanus-full-container:hover {
+    transform: scale(1.01);
+  }
+}

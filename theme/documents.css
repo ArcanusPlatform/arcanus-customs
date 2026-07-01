@@ -1,0 +1,172 @@
+/* =============================================================
+   @arcanus/theme — documents.css
+   DOCUMENTS & REPORTS module (tier 3)
+   -------------------------------------------------------------
+   Refactored from: Cover Letter to HMRC, agent_client_engagement
+   _letter, companies_house_report. Print-ready professional
+   documents — letters and dense data dossiers.
+
+   PAPER CONTEXT: `.doc` establishes its OWN light token scope, so
+   a document renders as paper even when mounted inside the dark
+   app shell, and prints / emails correctly with no app CSS.
+
+   Cleanups applied:
+     - 4 rival --theme-colour values (#6A1B9A / #2c2c2c / #000 /
+       #8E24AA) → one --doc-accent (brand violet), with .doc--mono
+       for the "regulatory board" black variant.
+     - Roboto / Inter / Arial drift → the theme's --font-sans.
+     - scattered status hexes → the theme's status tokens.
+   ============================================================= */
+
+.doc {
+  /* Local paper palette — independent of app theme, but the accent
+     follows the tenant brand so white-labelled letters/reports stay
+     on-brand. .doc--mono overrides it to slate for regulatory output. */
+  --doc-paper:   #ffffff;
+  --doc-ink:     var(--slate-900);
+  --doc-muted:   var(--slate-500);
+  --doc-line:    var(--slate-200);
+  --doc-line-2:  var(--slate-300);
+  --doc-soft:    rgba(var(--brand-primary-rgb), 0.07);
+  --doc-accent:  var(--brand-primary);
+  --doc-panel:   var(--slate-50);
+
+  background: var(--doc-paper);
+  color: var(--doc-ink);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+/* "Regulatory board" mono variant (was .black-theme) */
+.doc--mono {
+  --doc-accent: var(--slate-800);
+  --doc-soft:   var(--slate-100);
+}
+
+/* Page wrapper — letters sit on a centered sheet. */
+.doc__sheet {
+  max-width: 950px;
+  margin: 0 auto;
+  background: var(--doc-paper);
+  padding: 48px;
+  border: 1px solid var(--doc-line);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Document header ------------------------------- */
+.doc-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.doc-head__mark {
+  width: 52px; height: 52px; flex: none;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  display: grid; place-items: center;
+  color: #fff; font-weight: var(--weight-bold); font-size: 22px;
+}
+.doc--mono .doc-head__mark { background: var(--doc-accent); }
+.doc-head__eyebrow {
+  font-size: 11px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-caps);
+  color: var(--doc-accent); margin: 0 0 4px;
+}
+.doc-head__title { margin: 0; font-size: 28px; font-weight: var(--weight-bold); letter-spacing: -0.02em; line-height: 1.1; color: var(--doc-ink); }
+.doc-head__subtitle { margin-top: 6px; font-size: 12px; color: var(--doc-muted); }
+.doc-rule { border: 0; border-bottom: 2px solid var(--doc-accent); margin: 16px 0 24px; }
+
+/* ---------- Section titles -------------------------------- */
+.doc-section {            /* left-accent (letters) */
+  font-size: 18px; font-weight: var(--weight-bold);
+  color: var(--doc-accent);
+  border-left: 4px solid var(--doc-accent);
+  padding-left: 12px;
+  margin: 32px 0 14px;
+}
+.doc-section--rule {      /* uppercase underlined (dossiers) */
+  font-size: 11px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-caps);
+  color: var(--doc-ink);
+  border-left: none; padding: 0 0 4px;
+  border-bottom: 1px solid var(--doc-ink);
+}
+
+/* ---------- Info / notes panels --------------------------- */
+.doc-panel {
+  background: var(--doc-panel);
+  border: 1px solid var(--doc-line);
+  border-left: 4px solid var(--doc-accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.doc-panel--notes { border-left-width: 1px; color: var(--doc-muted); font-size: 12px; }
+.doc-panel--action { border: 1px solid var(--amber-500); border-left: 4px solid var(--amber-500); background: var(--color-warning-soft); }
+.doc-panel--action h4 { margin: 0 0 6px; font-size: 11px; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--amber-600); }
+
+/* ---------- Operational KPI strip ------------------------- */
+.doc-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid var(--doc-line);
+  border-radius: var(--radius-sm);
+  background: var(--doc-panel);
+  margin: 8px 0 24px;
+  overflow: hidden;
+}
+.doc-strip__cell { padding: 10px 14px; border-right: 1px solid var(--doc-line); }
+.doc-strip__cell:last-child { border-right: none; }
+.doc-strip__label { font-size: 10px; font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--doc-muted); margin-bottom: 2px; }
+.doc-strip__value { font-size: 13px; font-weight: var(--weight-bold); color: var(--doc-ink); }
+
+/* ---------- Dot-leader field list ------------------------- */
+.doc-fields { display: flex; flex-direction: column; }
+.doc-field { display: flex; align-items: flex-end; padding: 5px 0; font-size: 13px; }
+.doc-field__label { color: var(--doc-muted); margin-right: 8px; white-space: nowrap; }
+.doc-field__leader { flex: 1; border-bottom: 1px dotted var(--doc-line-2); margin-bottom: 4px; min-width: 12px; }
+.doc-field__value { font-weight: var(--weight-semibold); color: var(--doc-ink); padding-left: 8px; white-space: nowrap; }
+
+/* ---------- Data tables ----------------------------------- */
+.doc-table-wrap { border: 1px solid var(--doc-line); border-radius: var(--radius-sm); overflow: hidden; margin: 8px 0 20px; }
+.doc-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+.doc-table th {
+  background: var(--doc-soft);
+  color: var(--doc-accent);
+  padding: 9px 12px;
+  text-transform: uppercase; font-size: 10px; font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  border-bottom: 1px solid var(--doc-line);
+}
+.doc-table td { padding: 9px 12px; border-bottom: 1px solid var(--doc-line); vertical-align: top; color: var(--doc-ink); }
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table tr:nth-child(even) td { background: var(--doc-panel); }
+
+/* ---------- Status chips ---------------------------------- */
+.doc-chip {
+  display: inline-block; line-height: 1.2;
+  font-size: 10px; font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: var(--tracking-wide);
+  padding: 2px 7px; border-radius: var(--radius-sm);
+}
+.doc-chip--low,  .doc-chip--complete { background: var(--color-success-soft); color: var(--color-success); }
+.doc-chip--medium { background: var(--color-warning-soft); color: var(--color-warning); }
+.doc-chip--high  { background: var(--color-danger-soft);  color: var(--color-danger); }
+
+/* ---------- Signature blocks ------------------------------ */
+.doc-sign-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 48px; }
+.doc-sign__line { border-top: 1px solid var(--doc-ink); padding-top: 12px; min-height: 64px; }
+
+/* ---------- Footer ---------------------------------------- */
+.doc-foot { margin-top: 48px; border-top: 2px solid var(--doc-accent); padding-top: 18px; text-align: center; font-size: 11px; color: var(--doc-muted); line-height: 1.5; }
+
+/* ---------- Print ----------------------------------------- */
+@media print {
+  .doc { font-size: 12px; }
+  .doc__sheet { max-width: 100%; margin: 0; padding: 0; border: none; border-radius: 0; }
+  .doc-strip, .doc-panel, .doc-table-wrap { break-inside: avoid; }
+  @page { margin: 1.4cm; }
+}

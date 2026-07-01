@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Evidence Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #e1eb29eb;
+}
+body {
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+  background:#fafafa;
+}
+.header-full {
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo {
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line {
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 20px 0;
+}
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+  background:white;
+  border-radius: 8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.section-title {
+  margin-top:40px;
+  font-size:22px;
+  font-weight:700;
+  color:#333;
+  border-left:6px solid var(--theme-colour);
+  padding-left:12px;
+}
+.summary-box {
+  background:#f7f7da;
+  border-left:4px solid var(--theme-colour);
+  padding:20px;
+  margin-bottom:30px;
+  border-radius:6px;
+  font-size:15px;
+  color:#333;
+}
+.checklist-table, .checklist-table th, .checklist-table td {
+  border:1px solid #e5e7eb;
+  border-collapse:collapse;
+}
+.checklist-table th {
+  background:#f9fafc;
+  padding:10px;
+  font-size:14px;
+  color:#333;
+  font-weight:600;
+}
+.checklist-table td {
+  padding:10px;
+  font-size:14px;
+}
+.checkbox-cell {
+  text-align:center;
+  font-size:18px;
+}
+.notes-cell {
+  background:#ffffff;
+}
+.status-cell {
+  text-align:center;
+}
+.info-warning {
+  background:#fff9d6;
+  border-left:4px solid var(--theme-colour);
+  padding:18px;
+  border-radius:6px;
+  margin-bottom:30px;
+  color:#6a6400;
+  font-size:14px;
+}
+.summary-section {
+  margin-top:30px;
+  background:#f7fafe;
+  padding:20px;
+  border-radius:6px;
+  border-left:4px solid #002d62;
+}
+.footer {
+  margin-top:40px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+  padding-bottom:30px;
+}
+</style>
+</head>
+<body>
+
+<div class="header-full">
+    <img src="M_Logo_Yellow.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Evidence Checklist</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>Claim Type:</strong> {{claim.claim_type}}<br>
+    <strong>Date Prepared:</strong> {{today}}
+</div>
+
+<div class="info-warning">
+    ⚠️ Use this checklist to ensure all required evidence is gathered before submitting your C285 claim to HMRC.
+</div>
+
+<h2 class="section-title">Mandatory Documents (Required for All Claims)</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td><strong>Completed C285 Application Form</strong></td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Import Declaration (C88 or CDS)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>MRN Document / Declaration Acknowledgment</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Commercial Invoice(s)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Packing List</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Proof of Duty/VAT Payment</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Detailed Calculation Worksheet</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Cover Letter to HMRC</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Agent Authority Letter</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Bank Details Verification Form</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Compliance Statement (signed)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Tariff Classification Claims – Additional Evidence</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td>Product Technical Specifications</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Product Data Sheets / Brochures</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Tariff Classification Justification</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Reference to CN Notes</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>BTI Rulings (if applicable)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Lab Test Results (if applicable)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Product Samples or Photos</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Origin Claims – Additional Evidence</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td>Certificate of Origin (EUR.1, EUR-MED etc.)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Origin Declaration on Invoice</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Supplier’s Declaration</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Origin Explanation Document</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Bill of Materials (BOM)</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Manufacturing Process Description</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Proof of Preferential Eligibility</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Valuation Claims – Additional Evidence</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td>Revised / Corrected Commercial Invoice</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Credit/Debit Note</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Valuation Explanation Document</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Valuation Adjustment Worksheet</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Related Party Declaration</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Transfer Pricing Documentation</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Freight & Insurance Breakdown</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Currency Conversion Evidence</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Returned Goods Relief – Additional Evidence</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td>Original Export Declaration</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Export MRN / SAD Copy</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Evidence Goods in Same Condition</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Timeline Documentation</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Reason for Return</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>RGR Declaration Form</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Supporting Documentation</h2>
+
+<table class="checklist-table" width="100%">
+<thead>
+<tr>
+    <th>✓</th>
+    <th>Document</th>
+    <th>Status</th>
+    <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="checkbox-cell">☐</td><td>Bill of Lading / Air Waybill</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Transport Documents</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Insurance Documents</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Purchase Order</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Sales Contract or Agreement</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Supplier Correspondence</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+<tr><td class="checkbox-cell">☐</td><td>Previous HMRC Correspondence</td><td class="status-cell"></td><td class="notes-cell"></td></tr>
+</tbody>
+</table>
+
+<h2 class="section-title">Checklist Summary</h2>
+
+<div class="summary-section">
+    <table width="100%" style="border:none;">
+        <tr>
+            <td style="border:none; width:50%; padding-right:20px;">
+                <p><strong>Total Documents Required:</strong> _______</p>
+                <p><strong>Documents Obtained:</strong> _______</p>
+                <p><strong>Documents Outstanding:</strong> _______</p>
+            </td>
+            <td style="border:none; width:50%;">
+                <p><strong>Completion Status:</strong> _______%</p>
+                <p><strong>Target Submission Date:</strong> _______</p>
+                <p><strong>Reviewed By:</strong> _______</p>
+            </td>
+        </tr>
+    </table>
+
+    <div style="margin-top:20px; padding:15px; background:#ffffff; border-left:4px solid #002d62; border:1px solid #d1d5db;">
+        <p style="margin:0;"><strong>Outstanding Items / Action Required:</strong></p>
+        <div style="border:1px solid #d1d5db; min-height:80px; padding:10px; background:white; margin-top:10px;"></div>
+    </div>
+</div>
+
+</div>
+
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>

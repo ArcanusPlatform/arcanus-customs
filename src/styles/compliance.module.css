@@ -1,0 +1,468 @@
+/* Compliance Page Glassmorphic Styles */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+
+:root {
+  /* Compliance Status Colors */
+  --compliance-pass: #22c55e;
+  --compliance-warn: #f59e0b;
+  --compliance-fail: #ef4444;
+  --compliance-missing: #94a3b8;
+
+  /* Compliance Background Tints */
+  --compliance-pass-bg: rgba(34, 197, 94, 0.1);
+  --compliance-warn-bg: rgba(245, 158, 11, 0.1);
+  --compliance-fail-bg: rgba(239, 68, 68, 0.1);
+
+  /* Card effects - light app surface */
+  --glass-bg: #ffffff;
+  --glass-border: #e2e8f0;
+  --glass-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --glass-shadow-hover: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+/* ============================================
+   GLASSMORPHIC CARD STYLES
+   ============================================ */
+
+.complianceCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+  color: #111827;
+  transition: all 0.2s ease;
+}
+
+.complianceCard:hover {
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.complianceCardClickable {
+  cursor: pointer;
+}
+
+.complianceCardClickable:hover {
+  border-color: #33224f;
+}
+
+/* ============================================
+   RESPONSIVE GRID LAYOUTS
+   ============================================ */
+
+.accountComplianceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .accountComplianceGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .accountComplianceGrid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .analyticsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   STATUS INDICATORS
+   ============================================ */
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+}
+
+.statusPass {
+  background: var(--compliance-pass-bg);
+  color: var(--compliance-pass);
+  border: 1px solid var(--compliance-pass);
+}
+
+.statusWarn {
+  background: var(--compliance-warn-bg);
+  color: var(--compliance-warn);
+  border: 1px solid var(--compliance-warn);
+}
+
+.statusFail {
+  background: var(--compliance-fail-bg);
+  color: var(--compliance-fail);
+  border: 1px solid var(--compliance-fail);
+}
+
+.statusMissing {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--compliance-missing);
+  border: 1px solid var(--compliance-missing);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes progressRing {
+  from {
+    stroke-dashoffset: 565;
+  }
+  to {
+    stroke-dashoffset: var(--progress-offset);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   EXPANDABLE SECTIONS
+   ============================================ */
+
+.claimDetailPanel {
+  overflow: hidden;
+  transition:
+    max-height 300ms ease,
+    opacity 200ms ease;
+}
+
+.claimDetailPanelEnter {
+  max-height: 0;
+  opacity: 0;
+}
+
+.claimDetailPanelEnterActive {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.claimDetailPanelExit {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.claimDetailPanelExitActive {
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 200ms ease,
+    opacity 150ms ease;
+}
+
+/* ============================================
+   PROGRESS RING
+   ============================================ */
+
+.progressRing {
+  transform: rotate(-90deg);
+}
+
+.progressRingCircle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.progressRingBackground {
+  stroke: rgba(148, 163, 184, 0.2);
+}
+
+.progressRingProgress {
+  animation: progressRing 1.5s ease-out forwards;
+}
+
+/* ============================================
+   INTERACTIVE ELEMENTS
+   ============================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid #33224f;
+  outline-offset: 2px;
+}
+
+.buttonPrimary {
+  background: linear-gradient(135deg, #33224f 0%, #271a3e 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(51, 34, 79, 0.22);
+}
+
+.buttonPrimary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4c3474 0%, #33224f 100%);
+  box-shadow: 0 4px 8px rgba(51, 34, 79, 0.3);
+  transform: translateY(-1px);
+}
+
+.buttonSecondary {
+  background: #ffffff;
+  color: #33224f;
+  border: 1px solid #d8d3df;
+}
+
+.buttonSecondary:hover:not(:disabled) {
+  background: #f6f5f8;
+  border-color: #33224f;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   TABLE STYLES
+   ============================================ */
+
+.complianceTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.complianceTableHeader {
+  background: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.complianceTableHeaderCell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.complianceTableHeaderCell:hover {
+  color: #33224f;
+}
+
+.complianceTableHeaderCellActive {
+  color: #33224f;
+}
+
+.complianceTableRow {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.complianceTableRow:hover {
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.complianceTableCell {
+  padding: 1rem;
+}
+
+/* ============================================
+   ALERT BANNER
+   ============================================ */
+
+.alertBanner {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.alertBannerCritical {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.alertBannerWarning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.alertBannerContent {
+  flex: 1;
+}
+
+.alertBannerTitle {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.alertBannerDescription {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.alertBannerClose {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.alertBannerClose:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   FILTER CHIPS
+   ============================================ */
+
+.filterChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a78bfa;
+  transition: all 0.15s ease;
+}
+
+.filterChipRemove {
+  background: transparent;
+  border: none;
+  color: #a78bfa;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.filterChipRemove:hover {
+  color: #8b5cf6;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .complianceTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}

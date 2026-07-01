@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Preferential Origin Documentation Cover Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #E6BD2F;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Gold.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Preferential Origin Documentation Cover Sheet</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>Country of Origin:</strong> {{claim.country_of_export}}<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">Origin Documentation Package</h2>
+
+<p>This cover sheet accompanies the origin documentation submitted in support of C285 claim <strong>{{claim.reference}}</strong> for preferential tariff treatment under {{claim.preferential_scheme}}.</p>
+
+<h2 class="section-title">Document Inventory</h2>
+
+<table class="doc-table">
+    <thead>
+        <tr>
+            <th style="width: 5%;">☑</th>
+            <th style="width: 40%;">Document Type</th>
+            <th style="width: 25%;">Reference Number</th>
+            <th style="width: 15%;">Date</th>
+            <th style="width: 15%;">Pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Certificate of Origin (EUR.1)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>EUR-MED Certificate</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Origin Declaration on Invoice</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Supplier's Declaration</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Long-Term Supplier's Declaration</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Bill of Materials (BOM)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Manufacturing Process Description</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Origin Explanation Document</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Other: _______________</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Preferential Treatment Details</h2>
+
+<table class="info-table">
+    <tr>
+        <td style="width: 40%;"><strong>Trade Agreement / Scheme:</strong></td>
+        <td>{{claim.preferential_scheme}}</td>
+    </tr>
+    <tr>
+        <td><strong>Country of Origin:</strong></td>
+        <td>{{claim.country_of_export}}</td>
+    </tr>
+    <tr>
+        <td><strong>Preferential Tariff Rate Claimed:</strong></td>
+        <td>______%</td>
+    </tr>
+    <tr>
+        <td><strong>Standard Tariff Rate:</strong></td>
+        <td>______%</td>
+    </tr>
+    <tr>
+        <td><strong>Duty Saving:</strong></td>
+        <td>£{{claim.duty_overpayment}}</td>
+    </tr>
+</table>
+
+<h2 class="section-title">Submission Checklist</h2>
+
+<div class="checklist-box">
+    <ul style="list-style: none; padding-left: 0; margin: 0;">
+        <li>☐ All origin documents are original or certified copies</li>
+        <li>☐ Documents are in English or accompanied by certified translations</li>
+        <li>☐ Certificate numbers match those declared on import documentation</li>
+        <li>☐ Origin documents cover all items in the claim</li>
+        <li>☐ Documents are within validity period</li>
+        <li>☐ Supplier declarations are signed and dated</li>
+        <li>☐ All pages are legible and complete</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Recipient Information</h2>
+
+<p><strong>Submit to:</strong></p>
+<p>
+HM Revenue & Customs<br>
+Customs & International Trade<br>
+C285 Repayments Team<br>
+[Appropriate HMRC Office]
+</p>
+
+<p><strong>Submitted by:</strong></p>
+<p>
+{{agent.company}}<br>
+{{agent.address}}<br>
+{{agent.city}}, {{agent.postcode}}<br>
+Email: {{agent.email}}<br>
+Phone: {{agent.phone}}
+</p>
+
+<div style="margin-top: 30px;">
+    <p><strong>Total Pages in Package:</strong> _______</p>
+    <p><strong>Prepared By:</strong> _______________________</p>
+    <p><strong>Date:</strong> {{today}}</p>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

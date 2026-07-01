@@ -1,0 +1,17 @@
+# Netlify Configuration for M Customs Manager Web App
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirect all routes to index.html for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (set in Netlify dashboard)
+# VITE_API_URL = https://mdj-customs-backend-0c17d12529d3.herokuapp.com
+
+[build.environment]
+  NODE_VERSION = "18"

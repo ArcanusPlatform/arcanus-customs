@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Origin Treatment Explanation</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #E6BD2F;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Gold.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Origin Treatment Explanation</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Claim Reference:</strong> {{claim.reference}}<br>
+    <strong>MRN:</strong> {{claim.mrn}}<br>
+    <strong>Country of Origin:</strong> {{claim.country_of_export}}<br>
+    <strong>Trade Agreement:</strong> {{claim.preferential_scheme}}<br>
+    <strong>Date:</strong> {{today}}
+</div>
+
+<h2 class="section-title">1. Goods Description</h2>
+
+<div class="info-box">
+    <p><strong>Product:</strong> _______________________________________________________________________________</p>
+    <p><strong>Commodity Code:</strong> _______________</p>
+    <p><strong>Commercial Description:</strong> _______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">2. Origin Determination</h2>
+
+<h3 class="subsection-title">2.1 Country of Origin</h3>
+
+<table class="origin-table">
+    <tr>
+        <td style="width: 40%;"><strong>Declared Origin:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Correct Origin:</strong></td>
+        <td>{{claim.country_of_export}}</td>
+    </tr>
+    <tr>
+        <td><strong>Basis for Origin:</strong></td>
+        <td>☐ Wholly Obtained<br>☐ Substantially Transformed<br>☐ Last Substantial Processing</td>
+    </tr>
+</table>
+
+<h3 class="subsection-title">2.2 Origin Rules Applied</h3>
+
+<div class="rules-box">
+    <p style="margin-top: 0;"><strong>Applicable Origin Rules:</strong></p>
+    <ul style="margin-bottom: 0;">
+        <li>☐ <strong>Wholly Obtained:</strong> Product entirely obtained in a single country</li>
+        <li>☐ <strong>Change of Tariff Classification:</strong> Sufficient processing to change HS code</li>
+        <li>☐ <strong>Value Added Rule:</strong> Minimum percentage of value added in origin country</li>
+        <li>☐ <strong>Specific Processing:</strong> Particular manufacturing operations performed</li>
+        <li>☐ <strong>Last Substantial Processing:</strong> Final significant manufacturing step</li>
+    </ul>
+</div>
+
+<h2 class="section-title">3. Preferential Treatment Analysis</h2>
+
+<h3 class="subsection-title">3.1 Trade Agreement</h3>
+
+<table class="agreement-table">
+    <tr>
+        <td style="width: 40%;"><strong>Trade Agreement:</strong></td>
+        <td>{{claim.preferential_scheme}}</td>
+    </tr>
+    <tr>
+        <td><strong>Preference Claimed at Import:</strong></td>
+        <td>{{claim.preference_claimed_import}}</td>
+    </tr>
+    <tr>
+        <td><strong>Correct Preference:</strong></td>
+        <td>_______________</td>
+    </tr>
+    <tr>
+        <td><strong>Preferential Duty Rate:</strong></td>
+        <td>______%</td>
+    </tr>
+    <tr>
+        <td><strong>Standard Duty Rate:</strong></td>
+        <td>______%</td>
+    </tr>
+</table>
+
+<h3 class="subsection-title">3.2 Origin Criteria Met</h3>
+
+<div class="criteria-box">
+    <p style="margin-top: 0;"><strong>Requirements for Preferential Treatment:</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 5%;">☐</td>
+            <td style="border: none;">Goods originate in beneficiary country</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Valid proof of origin provided</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Direct transport requirement met</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Product-specific rules satisfied</td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">☐</td>
+            <td style="border: none;">Cumulation rules applied correctly (if applicable)</td>
+        </tr>
+    </table>
+</div>
+
+<h2 class="section-title">4. Evidence of Origin</h2>
+
+<table class="evidence-table">
+    <thead>
+        <tr>
+            <th style="width: 5%;">☑</th>
+            <th style="width: 40%;">Document Type</th>
+            <th style="width: 25%;">Reference Number</th>
+            <th style="width: 30%;">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Certificate of Origin (EUR.1)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>EUR-MED Certificate</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Origin Declaration on Invoice</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Supplier's Declaration</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Long-Term Supplier's Declaration</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Bill of Materials (BOM)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Manufacturing Process Description</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="checkbox-cell">☐</td>
+            <td>Transport Documents</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">5. Manufacturing Process</h2>
+
+<div class="process-box">
+    <h4 style="margin-top: 0; color: #002d62;">Production Steps:</h4>
+    <ol style="margin: 0; padding-left: 20px;">
+        <li>_______________________________________________________________________________</li>
+        <li>_______________________________________________________________________________</li>
+        <li>_______________________________________________________________________________</li>
+        <li>_______________________________________________________________________________</li>
+    </ol>
+    
+    <p style="margin-top: 15px;"><strong>Location of Manufacturing:</strong> _______________</p>
+    <p><strong>Substantial Transformation Occurred:</strong> ☐ Yes ☐ No</p>
+    <p><strong>Explanation:</strong> _______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">6. Material Sourcing</h2>
+
+<table class="materials-table">
+    <thead>
+        <tr>
+            <th>Material/Component</th>
+            <th>Origin Country</th>
+            <th>Value</th>
+            <th>% of Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr style="background: #f4f7fb; font-weight: 700;">
+            <td colspan="2">TOTAL</td>
+            <td></td>
+            <td>100%</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">7. Regulatory References</h2>
+
+<div class="reference-box">
+    <p><strong>Trade Agreement Rules of Origin:</strong></p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>Product-Specific Rules (PSR):</strong></p>
+    <p>_______________________________________________________________________________</p>
+    
+    <p style="margin-top: 15px;"><strong>HMRC Guidance:</strong></p>
+    <p>_______________________________________________________________________________</p>
+</div>
+
+<h2 class="section-title">8. Conclusion</h2>
+
+<div class="conclusion-box">
+    <p style="margin-top: 0;"><strong>Origin Determination:</strong></p>
+    <p>
+    Based on the manufacturing process, material sourcing, and application of the relevant rules of origin, 
+    the goods originate in <strong>{{claim.country_of_export}}</strong> and qualify for preferential treatment 
+    under <strong>{{claim.preferential_scheme}}</strong>.
+    </p>
+    
+    <p style="margin-top: 15px;"><strong>Preferential Treatment Claimed:</strong></p>
+    <p>
+    The goods are eligible for a preferential duty rate of <strong>______%</strong> instead of the 
+    standard rate of <strong>______%</strong>.
+    </p>
+    
+    <p style="margin-top: 15px;"><strong>Financial Impact:</strong></p>
+    <table style="border: none; margin: 10px 0;">
+        <tr style="border: none;">
+            <td style="border: none; width: 60%;">Duty Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.duty_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none;">VAT Overpaid:</td>
+            <td style="border: none; text-align: right;"><strong>£{{claim.vat_overpayment}}</strong></td>
+        </tr>
+        <tr style="border: none; border-top: 2px solid #002d62;">
+            <td style="border: none; padding-top: 5px;"><strong>Total Refund Due:</strong></td>
+            <td style="border: none; text-align: right; padding-top: 5px;"><strong>£{{claim.total_claim_amount}}</strong></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 30px;">
+    <p><strong>Prepared By:</strong> {{agent.contact}}</p>
+    <p><strong>Date:</strong> {{today}}</p>
+    <p><strong>Organisation:</strong> {{agent.company}}</p>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

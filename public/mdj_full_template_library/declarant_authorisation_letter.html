@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Declarant Authorisation Letter</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme-colour: #000000;
+}
+body { 
+  font-family:'Roboto',Arial,sans-serif;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+.header-full { 
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px 40px 5px 40px;
+}
+.header-full img.logo { 
+  width:80px;
+}
+.header-full h1 {
+  font-size:28px;
+  font-weight:700;
+  color:var(--theme-colour);
+  margin:0;
+}
+.header-line { 
+  border:0;
+  border-bottom:3px solid var(--theme-colour);
+  margin:5px 0 10px 0;
+}
+.container { 
+  max-width:900px;
+  margin:auto;
+  padding:0 40px 40px 40px;
+}
+.footer { 
+  margin-top:60px;
+  border-top:2px solid var(--theme-colour);
+  padding-top:20px;
+  font-size:12px;
+  text-align:center;
+  color:#555;
+}
+</style>
+</head>
+<body>
+<div class="header-full">
+    <img src="M_Logo_Black.png" class="logo" alt="M Customs Manager Logo">
+    <h1>Declarant Authorisation Letter</h1>
+</div>
+<hr class="header-line">
+<div class="container">
+</div>
+
+<div class="summary-box">
+    <strong>Date:</strong> {{today}}<br>
+    <strong>Trader:</strong> {{trader.name}}<br>
+    <strong>Trader EORI:</strong> {{trader.eori}}<br>
+    <strong>Declarant:</strong> {{declarant.name}}<br>
+    <strong>Declarant Organisation:</strong> {{declarant.organisation}}
+</div>
+
+<p style="margin-top: 30px;">
+<strong>To:</strong> HM Revenue & Customs<br>
+Customs & International Trade<br>
+Customs Declaration Service
+</p>
+
+<h2 class="section-title">Authorisation for Customs Declarations</h2>
+
+<p>Dear Sir/Madam,</p>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Trader Details</h3>
+
+<p>
+I/We, <strong>{{trader.name}}</strong> (EORI: <strong>{{trader.eori}}</strong>), hereby authorize:
+</p>
+
+<div class="info-box">
+    <p><strong>Declarant Name:</strong> {{declarant.name}}</p>
+    <p><strong>Declarant Capacity:</strong> {{declarant.capacity}}</p>
+    <p><strong>Organisation:</strong> {{declarant.organisation}}</p>
+    <p><strong>Contact Email:</strong> {{declarant.email}}</p>
+    <p><strong>Contact Phone:</strong> {{declarant.phone}}</p>
+</div>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Scope of Authorization</h3>
+
+<p>
+to act as our authorized declarant for customs purposes, with authority to:
+</p>
+
+<div class="info-box">
+    <ol style="margin: 0; padding-left: 20px;">
+        <li style="margin-bottom: 12px;">
+            <strong>Make Customs Declarations:</strong> Submit import and export declarations to HMRC on our behalf using the Customs Declaration Service (CDS) or other approved systems.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Represent Our Interests:</strong> Act as our representative in all matters relating to customs declarations, including providing information and responding to HMRC queries.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Access Our EORI:</strong> Use our EORI number ({{trader.eori}}) when making declarations on our behalf.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Submit Documentation:</strong> Provide supporting documentation, evidence, and information to HMRC as required for customs clearance.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Receive Communications:</strong> Receive correspondence, notifications, and decisions from HMRC relating to declarations made on our behalf.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Make Amendments:</strong> Submit amendments, corrections, or supplementary declarations as necessary.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong>Handle Post-Clearance Matters:</strong> Manage post-clearance amendments, C285 claims, and other customs compliance matters.
+        </li>
+    </ol>
+</div>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Declaration Types Covered</h3>
+
+<p>
+This authorization covers the following types of customs declarations:
+</p>
+
+<ul>
+    <li>☑ Import Declarations (H1, H2, H3, H4, H5, H6)</li>
+    <li>☑ Export Declarations (C21, D21)</li>
+    <li>☑ Simplified Declarations</li>
+    <li>☑ Supplementary Declarations</li>
+    <li>☑ Post-Clearance Amendments</li>
+    <li>☑ C285 Repayment Claims</li>
+    <li>☑ Other customs procedures as required</li>
+</ul>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Trader Responsibilities</h3>
+
+<p>
+We confirm that:
+</p>
+
+<div class="info-box">
+    <ul style="margin: 0; padding-left: 20px;">
+        <li>We will provide the declarant with accurate and complete information for all declarations</li>
+        <li>We remain ultimately responsible for the accuracy of all declarations made on our behalf</li>
+        <li>We will ensure the declarant has access to all necessary documentation</li>
+        <li>We will notify HMRC immediately if this authorization is revoked</li>
+        <li>We understand that we are liable for any duties, taxes, and penalties arising from declarations</li>
+    </ul>
+</div>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Declarant Responsibilities</h3>
+
+<p>
+The declarant confirms that they will:
+</p>
+
+<div class="info-box">
+    <ul style="margin: 0; padding-left: 20px;">
+        <li>Make declarations in accordance with customs regulations and HMRC requirements</li>
+        <li>Use reasonable care to ensure the accuracy of all declarations</li>
+        <li>Maintain proper records in accordance with customs record-keeping requirements</li>
+        <li>Notify the trader of any issues, queries, or decisions from HMRC</li>
+        <li>Act in the trader's best interests at all times</li>
+    </ul>
+</div>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Data Protection and Confidentiality</h3>
+
+<p>
+We authorize HMRC to share information relating to our customs declarations and compliance matters with the named declarant. We understand that the declarant is bound by professional confidentiality obligations and data protection requirements.
+</p>
+
+<p>
+We confirm that the declarant has our consent to process our personal and business data for customs declaration purposes in accordance with UK GDPR and the Data Protection Act 2018.
+</p>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Duration of Authorization</h3>
+
+<p>
+This authorization shall remain in force until:
+</p>
+
+<ul>
+    <li>Written notice of revocation is provided to HMRC by either party, or</li>
+    <li>A period of <strong>12 months</strong> from the date of this letter, whichever occurs first</li>
+</ul>
+
+<p>
+This authorization may be renewed by written confirmation from both parties.
+</p>
+
+<h3 style="color: #002d62; font-size: 16px; margin-top: 25px;">Trader Declaration and Signature</h3>
+
+<div style="margin-top: 40px;">
+    <p><strong>For and on behalf of {{trader.name}}:</strong></p>
+    
+    <table style="margin-top: 30px; border: none;">
+        <tr style="border: none;">
+            <td style="border: none; width: 50%; padding-right: 20px;">
+                <p><strong>Signature:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 50px; margin-top: 10px;"></p>
+            </td>
+            <td style="border: none; width: 50%;">
+                <p><strong>Date:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 50px; margin-top: 10px;"></p>
+            </td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none; padding-top: 20px;" colspan="2">
+                <p><strong>Name:</strong> {{trader.contact_name}}</p>
+                <p><strong>Position:</strong> ___________________________________</p>
+                <p><strong>Company:</strong> {{trader.name}}</p>
+                <p><strong>EORI:</strong> {{trader.eori}}</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid #002d62;">
+    <h3 style="color: #002d62; margin-top: 0;">Declarant Acceptance</h3>
+    
+    <p>
+    I/We accept the appointment as authorized declarant for {{trader.name}} and confirm that I/we will fulfill the responsibilities outlined above.
+    </p>
+    
+    <table style="margin-top: 30px; border: none;">
+        <tr style="border: none;">
+            <td style="border: none; width: 50%; padding-right: 20px;">
+                <p><strong>Signature:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 50px; margin-top: 10px;"></p>
+            </td>
+            <td style="border: none; width: 50%;">
+                <p><strong>Date:</strong></p>
+                <p style="border-bottom: 2px solid #000; height: 50px; margin-top: 10px;"></p>
+            </td>
+        </tr>
+        <tr style="border: none;">
+            <td style="border: none; padding-top: 20px;" colspan="2">
+                <p><strong>Name:</strong> {{declarant.name}}</p>
+                <p><strong>Capacity:</strong> {{declarant.capacity}}</p>
+                <p><strong>Organisation:</strong> {{declarant.organisation}}</p>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+<div class="footer">
+{settings.business_name}<br>
+{settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+Email: {settings.email} | Phone: {settings.phone}<br>
+<em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+© {year} M Assist AI. All rights reserved.</em>
+</div>
+</body>
+</html>

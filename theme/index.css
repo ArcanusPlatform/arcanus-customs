@@ -1,0 +1,19 @@
+/* =============================================================
+   @arcanus/theme — index.css
+   Single entrypoint. Import this in any app:
+       @import "@arcanus/theme";          (bundler / PostCSS)
+       <link rel="stylesheet" href=".../theme/index.css">
+   Load order matters: primitives → semantic → components.
+   ============================================================= */
+
+@import "./tokens.css";
+@import "./themes.css";
+@import "./components.css";
+@import "./missing-components.css";
+@import "./responsive.css";
+@import "./branding.css";
+@import "./documents.css";
+@import "./whitelabel.css";
+
+/* Optional fonts. Self-host in production; CDN shown for convenience. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');

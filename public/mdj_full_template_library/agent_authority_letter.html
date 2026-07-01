@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Agent / Accountant Authority Letter</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --theme-colour: #D80000;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #fafafa;
+  color: #222;
+}
+
+.header-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 40px 5px 40px;
+}
+
+.header-full img.logo {
+  width: 80px;
+}
+
+.header-full h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  margin: 0;
+}
+
+.header-line {
+  border: 0;
+  border-bottom: 3px solid var(--theme-colour);
+  margin: 5px 0 10px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* Section titles */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--theme-colour);
+  border-left: 5px solid var(--theme-colour);
+  padding-left: 12px;
+  margin-top: 50px;
+}
+
+/* Info Panels */
+.info-box {
+  background: #fff2f2;
+  border-left: 4px solid var(--theme-colour);
+  padding: 16px;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Checklist / Bullets */
+ul li {
+  margin-bottom: 8px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  background: #f8d7da;
+  color: #7a0c0c;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #e0b3b3;
+}
+
+table td {
+  padding: 10px;
+  border: 1px solid #e0b3b3;
+  background: #fff;
+}
+
+/* Declaration */
+.declaration-box {
+  border: 2px solid var(--theme-colour);
+  background: #fff5f5;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  border-top: 2px solid var(--theme-colour);
+  padding-top: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-full">
+  <img src="M_Logo_Red.png" class="logo" alt="M Customs Manager Logo">
+  <h1>Agent / Accountant Authority Letter</h1>
+</div>
+<hr class="header-line">
+
+<div class="container">
+
+<!-- DETAILS BOX -->
+<div class="info-box" style="background:#fff8f8;">
+  <strong>Date:</strong> {{today}}<br>
+  <strong>Trader:</strong> {{trader.name}}<br>
+  <strong>Trader EORI:</strong> {{trader.eori}}<br>
+  <strong>Agent:</strong> {{agent.company}}<br>
+  <strong>Agent EORI:</strong> {{agent.eori}}
+</div>
+
+<!-- INTRO -->
+<p>
+<strong>To:</strong><br>
+HM Revenue & Customs<br>
+Customs & International Trade<br>
+C285 Repayments Team
+</p>
+
+<h2 class="section-title">Letter of Authority for Agent Representation</h2>
+
+<p>Dear Sir/Madam,</p>
+
+<h3 style="color:#7a0c0c; margin-top: 25px;">Authorization of Agent</h3>
+
+<p>
+I/We, <strong>{{trader.name}}</strong> (EORI: <strong>{{trader.eori}}</strong>), hereby authorize the following agent to act on our behalf:
+</p>
+
+<!-- AGENT DETAILS -->
+<div class="info-box">
+  <p><strong>Agent Name:</strong> {{agent.company}}</p>
+  <p><strong>Agent EORI:</strong> {{agent.eori}}</p>
+  <p><strong>Agent Address:</strong><br>
+  {{agent.address}}<br>
+  {{agent.city}}, {{agent.postcode}}<br>
+  {{agent.country}}</p>
+  <p><strong>Agent Contact:</strong> {{agent.contact}}</p>
+  <p><strong>Email:</strong> {{agent.email}}</p>
+  <p><strong>Phone:</strong> {{agent.phone}}</p>
+</div>
+
+<p>
+The above agent is authorised to act on our behalf in relation to repayment claims and customs matters as described below.
+</p>
+
+<!-- SCOPE OF AUTHORITY -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">Scope of Authority</h3>
+
+<div class="info-box">
+  <ol style="margin:0; padding-left:20px;">
+    <li><strong>C285 Repayment Claims:</strong> Prepare, submit and manage repayment applications.</li>
+    <li><strong>HMRC Communications:</strong> Respond to queries and receive correspondence.</li>
+    <li><strong>Document Submission:</strong> Provide evidence and supporting materials.</li>
+    <li><strong>Information Provision:</strong> Supply declarations and clarification to HMRC.</li>
+    <li><strong>Representation:</strong> Represent us in discussions or meetings.</li>
+    <li><strong>Appeals/Reviews:</strong> Submit appeals or reviews where appropriate.</li>
+  </ol>
+</div>
+
+<!-- CLAIMS COVERED -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">Specific Claims Covered</h3>
+
+<p>
+This authority specifically covers the following claim(s):
+</p>
+
+<table>
+  <tr>
+    <th>Claim Reference</th>
+    <th>MRN</th>
+    <th>Claim Amount</th>
+  </tr>
+  <tr>
+    <td>{{claim.reference}}</td>
+    <td>{{claim.mrn}}</td>
+    <td>£{{claim.total_claim_amount}}</td>
+  </tr>
+</table>
+
+<p style="font-size: 13px; font-style: italic;">
+This authority also extends to any related or subsequent claims arising from the same import transactions.
+</p>
+
+<!-- HMRC REQUESTS -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">HMRC Notification</h3>
+
+<p>We request that HMRC:</p>
+
+<ul>
+  <li>Recognise the above-named agent as our authorised representative</li>
+  <li>Direct all correspondence for these claims to the agent</li>
+  <li>Accept submissions made by the agent on our behalf</li>
+  <li>Permit the agent access to information relating to our declarations</li>
+</ul>
+
+<!-- DATA PROTECTION -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">Data Protection & Confidentiality</h3>
+
+<p>
+We authorise HMRC to share information relating to our import declarations and repayment claims with the above agent, 
+who is bound by professional confidentiality and data protection obligations.
+</p>
+
+<p>
+The agent is permitted to process personal and business data for the purpose of customs compliance and C285 repayment 
+claim management in accordance with UK GDPR and the Data Protection Act 2018.
+</p>
+
+<!-- DURATION -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">Duration of Authority</h3>
+
+<p>
+This authority remains valid until:
+</p>
+
+<ul>
+  <li>Written revocation is issued, or</li>
+  <li>All claims under this authority have been concluded, or</li>
+  <li>Three (3) years from the date of this letter — whichever is earlier.</li>
+</ul>
+
+<!-- DECLARATION -->
+<h3 style="color:#7a0c0c; margin-top: 30px;">Declaration</h3>
+
+<div class="declaration-box">
+  <ul style="margin:0; padding-left:20px;">
+    <li>I/We confirm authority to appoint the named agent</li>
+    <li>The information provided is complete and accurate</li>
+    <li>The agent acts on our behalf in all specified customs matters</li>
+    <li>We remain responsible for the accuracy of information supplied to HMRC</li>
+    <li>HMRC will be notified immediately if this authority is withdrawn</li>
+  </ul>
+</div>
+
+<!-- SIGNATURE -->
+<div style="margin-top: 40px;">
+  <p><strong>Yours faithfully,</strong></p>
+
+  <table style="width:100%; border:none; margin-top:30px;">
+    <tr>
+      <td style="width:50%; padding-right:20px; border:none;">
+        <strong>Signature:</strong>
+        <p style="border-bottom:2px solid #000; height:50px; margin-top:10px;"></p>
+      </td>
+      <td style="width:50%; border:none;">
+        <strong>Date:</strong>
+        <p style="border-bottom:2px solid #000; height:50px; margin-top:10px;"></p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding-top:20px; border:none;">
+        <strong>Name:</strong> {{trader.contact_name}}<br>
+        <strong>Position:</strong> ______________________________<br>
+        <strong>Company:</strong> {{trader.name}}<br>
+        <strong>EORI:</strong> {{trader.eori}}<br>
+        <strong>Company Stamp (if applicable):</strong>
+        <div style="border:1px dashed #aaa; height:80px; margin-top:10px;"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- FINAL NOTE -->
+<div class="info-box" style="background:#e3f2fd; border-left-color:#1976d2;">
+  <p style="margin:0; font-size:13px; color:#003b82;">
+    <strong>📌 Important:</strong>  
+    This signed letter must accompany your C285 claim submission.  
+    Please retain a copy for your business records.
+  </p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  {settings.business_name}<br>
+  {settings.address_line1}, {settings.address_line2}, {settings.city}, {settings.postcode}<br>
+  Email: {settings.email} | Phone: {settings.phone}<br>
+  <em>Prepared by M Assist AI — Duty Repayment & Customs Compliance Specialists.<br>
+  © {year} M Assist AI. All rights reserved.</em>
+</div>
+
+</body>
+</html>
